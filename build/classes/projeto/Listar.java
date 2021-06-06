@@ -11,7 +11,6 @@ import service.UsuarioService;
 import session.DadosSession;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.*;
@@ -31,6 +30,7 @@ public class Listar extends javax.swing.JFrame {
      */
     public Listar() {
         if(DadosSession.existeUsuarioLogado()){
+            aluguelService.inserirAlugueis();
             initComponents();
         } else {
             this.rotas.goLogin();
@@ -76,13 +76,7 @@ public class Listar extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 0));
         jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarHome(evt);
-            }
-        });
-        jTable1.setRowHeight(50);
-        jTable1.setFont(new java.awt.Font("Bahnschrift", 1, 16));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
 
             criarObjetoTabela(),
@@ -113,7 +107,7 @@ public class Listar extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1704, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -181,15 +175,6 @@ public class Listar extends javax.swing.JFrame {
         }
 
         return tabela;
-    }
-
-    private void voltarHome(ActionEvent evt){
-        this.rotas.goHome();
-        fecharTelaListar();
-    }
-
-    private void fecharTelaListar() {
-        this.setVisible(false);
     }
 
     /**
