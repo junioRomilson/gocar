@@ -8,6 +8,7 @@ import model.Cliente;
 import routes.Routes;
 import service.ClienteService;
 import service.UsuarioService;
+import session.DadosSession;
 
 import java.awt.Image;
 import java.awt.Graphics;
@@ -28,7 +29,7 @@ public class CadastroCliente extends javax.swing.JFrame {
      */
     public CadastroCliente() {
 
-        if(usuarioService.existeUsuarioLogado()){
+        if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
             this.rotas.goLogin();
@@ -354,6 +355,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cliente Já Cadastrado!");
             }
         }
+        fecharTelaCadastroCliente();
         this.rotas.goHome();
 
     }
@@ -361,6 +363,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private Cliente criarClienteTela() {
         return new Cliente(Nome.getText(), Long.valueOf(Cpf.getText()),Email.getText(), Contato.getText(),
                 Long.valueOf(Rg.getText()),Long.valueOf(Cep.getText()), Uf.getText(), Logadouro.getText(), Bairro.getText(),Cidade.getName());
+    }
+
+    private void fecharTelaCadastroCliente(){
+        this.setVisible(false);
     }
 
     /**

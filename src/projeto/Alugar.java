@@ -27,12 +27,11 @@ public class Alugar extends javax.swing.JFrame {
      */
     public Alugar() {
 
-        if(usuarioService.existeUsuarioLogado()){
+        if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
             this.rotas.goLogin();
         }
-        initComponents();
     }
 
     /**

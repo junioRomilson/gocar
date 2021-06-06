@@ -6,6 +6,7 @@
 package projeto;
 import routes.Routes;
 import service.UsuarioService;
+import session.DadosSession;
 
 import java.awt.Image;
 import java.awt.Graphics;
@@ -26,7 +27,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
 
-        if(usuarioService.existeUsuarioLogado()){
+        if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
             this.rotas.goLogin();

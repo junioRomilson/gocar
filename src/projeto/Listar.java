@@ -6,6 +6,7 @@
 package projeto;
 import routes.Routes;
 import service.UsuarioService;
+import session.DadosSession;
 
 import java.awt.Image;
 import java.awt.Graphics;
@@ -24,7 +25,7 @@ public class Listar extends javax.swing.JFrame {
      * Creates new form Listar
      */
     public Listar() {
-        if(usuarioService.existeUsuarioLogado()){
+        if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
             this.rotas.goLogin();

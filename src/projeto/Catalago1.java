@@ -26,7 +26,7 @@ public class Catalago1 extends javax.swing.JFrame {
      * Creates new form Catalago1
      */
     public Catalago1() {
-        if(usuarioService.existeUsuarioLogado()){
+        if(DadosSession.existeUsuarioLogado()){
             initComponents();
             calcularValorAluguel();
         } else {

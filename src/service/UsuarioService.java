@@ -1,12 +1,13 @@
 package service;
 
 import model.Usuario;
+import session.DadosSession;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioService {
-    public static Usuario usuarioLogado = new Usuario();
+
     List<Usuario> bdUsuarios = new ArrayList<Usuario>();
 
     public boolean validarLogin(String usuario, String senha){
@@ -15,16 +16,12 @@ public class UsuarioService {
 
         for (Usuario user: this.bdUsuarios) {
             if(user.getUsuario().equals(usuario) && user.getSenha().equals(senha)){
-                this.usuarioLogado = user;
+                DadosSession.setUsuarioLogado(user);
                 return true;
             }
         }
 
         return false;
-    }
-
-    public boolean existeUsuarioLogado(){
-        return (this.usuarioLogado.getId() != null) ? true : false;
     }
 
     private void setarUsuariosBD(){
