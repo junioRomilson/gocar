@@ -402,12 +402,17 @@ public class Catalago1 extends javax.swing.JFrame {
         Voltar.setText("Voltar");
         Voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VoltarActionPerformed(evt);
+                voltar(evt);
             }
         });
 
         Proximo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Proximo.setText("Proximo");
+        Proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proximo(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(GrupoA, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardGol, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -484,9 +489,19 @@ public class Catalago1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VoltarActionPerformed
+    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goAlugar();
+        fecharCatalogo1();
+    }
+
+    private void proximo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goCatalogo2();
+        fecharCatalogo1();
+    }
+
+    private void fecharCatalogo1() {
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments

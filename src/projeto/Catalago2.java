@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package projeto;
+import routes.Routes;
+import service.UsuarioService;
+import session.DadosSession;
+
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -14,11 +18,19 @@ import javax.swing.ImageIcon;
  */
 public class Catalago2 extends javax.swing.JFrame {
 
+    private Routes rotas = new Routes();
+    private UsuarioService usuarioService = new UsuarioService();
+
     /**
      * Creates new form Catalago1
      */
     public Catalago2() {
-        initComponents();
+        if(DadosSession.existeUsuarioLogado()){
+            initComponents();
+            calcularValorAluguel();
+        } else {
+            rotas.goLogin();
+        }
     }
 
     /**
@@ -77,6 +89,7 @@ public class Catalago2 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Voltar = new javax.swing.JButton();
         Proximo = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GoCar Locadora de Carros");
@@ -385,10 +398,29 @@ public class Catalago2 extends javax.swing.JFrame {
         Voltar.setBackground(new java.awt.Color(255, 255, 0));
         Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar(evt);
+            }
+        });
+
+        Anterior.setBackground(new java.awt.Color(255, 255, 0));
+        Anterior.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anterior(evt);
+            }
+        });
 
         Proximo.setBackground(new java.awt.Color(255, 255, 0));
         Proximo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Proximo.setText("Proximo");
+        Proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proximo(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(GrupoFS, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardHb20, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -397,6 +429,7 @@ public class Catalago2 extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Voltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Proximo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Anterior, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -418,8 +451,10 @@ public class Catalago2 extends javax.swing.JFrame {
                         .addGap(208, 208, 208)
                         .addComponent(GrupoFS))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(457, 457, 457)
+                        .addGap(300, 300, 300)
                         .addComponent(Voltar)
+                        .addGap(248, 248, 248)
+                        .addComponent(Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(248, 248, 248)
                         .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -444,6 +479,7 @@ public class Catalago2 extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Proximo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Anterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Voltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
         );
@@ -463,6 +499,31 @@ public class Catalago2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void calcularValorAluguel() {
+        System.out.println(DadosSession.getDataRetirada());
+        //Date dataRetirada = new Date(DadosSession.getDataRetirada());
+        //Date dataDevolucao = new Date(DadosSession.getDataDevolucao());
+    }
+
+    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goAlugar();
+        fecharCatalogo2();
+    }
+
+    private void anterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goCatalogo1();
+        fecharCatalogo2();
+    }
+
+    private void proximo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goCatalogo3();
+        fecharCatalogo2();
+    }
+
+    private void fecharCatalogo2() {
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
@@ -533,6 +594,7 @@ public class Catalago2 extends javax.swing.JFrame {
     private javax.swing.JLabel NomeHb20;
     private javax.swing.JLabel NomeVersa;
     private javax.swing.JButton Proximo;
+    private javax.swing.JButton Anterior;
     private javax.swing.JLabel RetiradaCronos;
     private javax.swing.JLabel RetiradaHb20;
     private javax.swing.JLabel RetiradaVersa;

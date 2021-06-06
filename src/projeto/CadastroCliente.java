@@ -12,6 +12,7 @@ import session.DadosSession;
 
 import java.awt.Image;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
@@ -166,6 +167,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarHome(evt);
+            }
+        });
 
         javax.swing.GroupLayout CidadeLayout = new javax.swing.GroupLayout(Cidade);
         Cidade.setLayout(CidadeLayout);
@@ -373,6 +379,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private Cliente criarClienteTela() {
         return new Cliente(Nome.getText(), Long.valueOf(Cpf.getText()),Email.getText(), Contato.getText(),
                 Long.valueOf(Rg.getText()),Long.valueOf(Cep.getText()), Uf.getText(), Logadouro.getText(), Bairro.getText(),Cidade.getName());
+    }
+    private void voltarHome(ActionEvent evt){
+        this.rotas.goHome();
+        fecharTelaCadastroCliente();
     }
 
     private void fecharTelaCadastroCliente(){

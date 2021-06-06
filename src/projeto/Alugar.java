@@ -11,6 +11,7 @@ import session.DadosSession;
 
 import java.awt.Image;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
@@ -77,10 +78,20 @@ public class Alugar extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setText("GoCar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugar(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 0));
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarHome(evt);
+            }
+        });
 
         LocalRetirada.setBackground(new java.awt.Color(255, 255, 204));
         LocalRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -191,12 +202,24 @@ public class Alugar extends javax.swing.JFrame {
 
     private void alugar(java.awt.event.ActionEvent evt){
 
-        System.out.println(DataRetirada.getText());
-        System.out.println(DataDevolucao.getText());
-
         DadosSession.setDataRetirada(DataRetirada.getText());
         DadosSession.setDataDevolucao(DataDevolucao.getText());
+
+        DadosSession.setHoraRetirada(HoraRetirada.getText());
+        DadosSession.setHoraDevolucao(HoraDevolucao.getName());
+        DadosSession.setAgencia(LocalRetirada.getText());
+
         this.rotas.goCatalogo1();
+        fecharTelaAlugar();
+    }
+
+    private void voltarHome(ActionEvent evt){
+        this.rotas.goHome();
+        fecharTelaAlugar();
+    }
+
+    private void fecharTelaAlugar(){
+        this.setVisible(false);
     }
 
 

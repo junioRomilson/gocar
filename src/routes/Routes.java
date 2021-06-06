@@ -38,4 +38,14 @@ public class Routes {
         Catalago1 telaCatalogo1 = new Catalago1();
         telaCatalogo1.setVisible(true);
     }
+
+    public void goCatalogo2() {
+        Catalago2 telaCatalogo2 = new Catalago2();
+        telaCatalogo2.setVisible(true);
+    }
+
+    public void goCatalogo3() {
+        Catalago3 telaCatalogo3 = new Catalago3();
+        telaCatalogo3.setVisible(true);
+    }
 }

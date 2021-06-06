@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package projeto;
+import routes.Routes;
+import service.UsuarioService;
+import session.DadosSession;
+
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -14,11 +18,19 @@ import javax.swing.ImageIcon;
  */
 public class Catalago3 extends javax.swing.JFrame {
 
+    private Routes rotas = new Routes();
+    private UsuarioService usuarioService = new UsuarioService();
+
     /**
      * Creates new form Catalago1
      */
     public Catalago3() {
-        initComponents();
+        if(DadosSession.existeUsuarioLogado()){
+            initComponents();
+            calcularValorAluguel();
+        } else {
+            rotas.goLogin();
+        }
     }
 
     /**
@@ -372,16 +384,26 @@ public class Catalago3 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Imagem1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logop.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         Voltar.setBackground(new java.awt.Color(255, 255, 0));
         Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 51));
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButton1.setText("Proximo");
+        jButton1.setText("Anterior");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anterior(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(GrupoGC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardCactos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -457,6 +479,26 @@ public class Catalago3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void calcularValorAluguel() {
+        System.out.println(DadosSession.getDataRetirada());
+        //Date dataRetirada = new Date(DadosSession.getDataRetirada());
+        //Date dataDevolucao = new Date(DadosSession.getDataDevolucao());
+    }
+
+    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goAlugar();
+        fecharCatalogo3();
+    }
+
+    private void anterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.rotas.goCatalogo2();
+        fecharCatalogo3();
+    }
+
+    private void fecharCatalogo3() {
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
