@@ -52,60 +52,60 @@ public class Alugar extends javax.swing.JFrame {
         }
         ;
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        LocalRetirada = new javax.swing.JTextField();
         DataRetirada = new javax.swing.JTextField();
         HoraRetirada = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         DataDevolucao = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        HoraD = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel1.setText("Local de Retirada");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel2.setText("Retirada");
 
-        DataRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        DataRetirada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DataRetiradaActionPerformed(evt);
-            }
-        });
-        HoraRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel3.setText("Devolução");
-
-        DataDevolucao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setText("GoCar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alugar(evt);
-            }
-        });
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 0));
+        jButton2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jButton2.setText("Voltar");
+
+        LocalRetirada.setBackground(new java.awt.Color(255, 255, 204));
+        LocalRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        DataRetirada.setBackground(new java.awt.Color(255, 255, 204));
+        DataRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        HoraRetirada.setBackground(new java.awt.Color(255, 255, 204));
+        HoraRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        DataDevolucao.setBackground(new java.awt.Color(255, 255, 204));
+        DataDevolucao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        HoraD.setBackground(new java.awt.Color(255, 255, 204));
 
         HoraDevolucao.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        HoraDevolucao.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        HoraDevolucao.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        HoraDevolucao.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        HoraDevolucao.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        HoraDevolucao.setLayer(LocalRetirada, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(DataRetirada, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(HoraRetirada, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        HoraDevolucao.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(DataDevolucao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        HoraDevolucao.setLayer(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        HoraDevolucao.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        HoraDevolucao.setLayer(HoraD, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout HoraDevolucaoLayout = new javax.swing.GroupLayout(HoraDevolucao);
         HoraDevolucao.setLayout(HoraDevolucaoLayout);
@@ -113,45 +113,60 @@ public class Alugar extends javax.swing.JFrame {
             HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HoraDevolucaoLayout.createSequentialGroup()
                 .addGap(278, 278, 278)
-                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LocalRetirada))
                 .addGap(103, 103, 103)
                 .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HoraDevolucaoLayout.createSequentialGroup()
-                        .addComponent(DataRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(HoraRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addGap(84, 84, 84)
-                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(HoraDevolucaoLayout.createSequentialGroup()
-                        .addComponent(DataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addComponent(DataRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HoraRetirada, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                        .addGap(83, 83, 83)))
+                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(HoraDevolucaoLayout.createSequentialGroup()
+                        .addComponent(DataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(HoraD, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(66, 66, 66)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoraDevolucaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(598, 598, 598))
         );
         HoraDevolucaoLayout.setVerticalGroup(
             HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoraDevolucaoLayout.createSequentialGroup()
-                .addContainerGap(490, Short.MAX_VALUE)
+                .addGap(487, 487, 487)
                 .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(DataRetirada)
-                    .addComponent(HoraRetirada)
-                    .addComponent(jTextField1)
-                    .addComponent(DataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(171, 171, 171))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoraDevolucaoLayout.createSequentialGroup()
+                        .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(15, 15, 15)
+                        .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(HoraRetirada, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                                .addComponent(LocalRetirada)
+                                .addComponent(DataRetirada))
+                            .addGroup(HoraDevolucaoLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(HoraDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(HoraD)
+                                    .addComponent(DataDevolucao, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))))
+                        .addGap(75, 75, 75))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoraDevolucaoLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,17 +177,15 @@ public class Alugar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(HoraDevolucao)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(HoraDevolucao)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HoraRetiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoraRetiradaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HoraRetiradaActionPerformed
-
-    private void DataRetiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataRetiradaActionPerformed
+    private void DataRetiradaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         System.out.println(DataRetirada.getText());
     }
 
@@ -225,14 +238,15 @@ public class Alugar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DataDevolucao;
     private javax.swing.JTextField DataRetirada;
+    private javax.swing.JTextField HoraD;
     private javax.swing.JLayeredPane HoraDevolucao;
     private javax.swing.JTextField HoraRetirada;
+    private javax.swing.JTextField LocalRetirada;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
 
