@@ -75,6 +75,8 @@ public class Catalago2 extends javax.swing.JFrame {
         LocalVersa = new javax.swing.JLabel();
         ValorVersa = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Voltar = new javax.swing.JButton();
+        Proximo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GoCar Locadora de Carros");
@@ -159,7 +161,7 @@ public class Catalago2 extends javax.swing.JFrame {
             .addGroup(CardHb20Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(NomeHb20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -177,8 +179,9 @@ public class Catalago2 extends javax.swing.JFrame {
                 .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LocalHb20)
                     .addComponent(ValorHb20))
-                .addGap(32, 32, 32)
-                .addComponent(AlugarHb20))
+                .addGap(18, 18, 18)
+                .addComponent(AlugarHb20)
+                .addGap(14, 14, 14))
         );
 
         NomeCronos.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
@@ -379,11 +382,21 @@ public class Catalago2 extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logop.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
+        Voltar.setBackground(new java.awt.Color(255, 255, 0));
+        Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        Voltar.setText("Voltar");
+
+        Proximo.setBackground(new java.awt.Color(255, 255, 0));
+        Proximo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        Proximo.setText("Proximo");
+
         jDesktopPane1.setLayer(GrupoFS, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardHb20, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardCronos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardVersa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Voltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Proximo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -398,10 +411,17 @@ public class Catalago2 extends javax.swing.JFrame {
                 .addComponent(CardVersa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(208, 208, 208)
-                .addComponent(GrupoFS)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(208, 208, 208)
+                        .addComponent(GrupoFS))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(457, 457, 457)
+                        .addComponent(Voltar)
+                        .addGap(248, 248, 248)
+                        .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -421,7 +441,11 @@ public class Catalago2 extends javax.swing.JFrame {
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(CardCronos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CardHb20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(65, 65, 65))
+                .addGap(19, 19, 19)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Proximo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Voltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -434,7 +458,7 @@ public class Catalago2 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 299, Short.MAX_VALUE))
+                .addGap(0, 293, Short.MAX_VALUE))
         );
 
         pack();
@@ -508,12 +532,14 @@ public class Catalago2 extends javax.swing.JFrame {
     private javax.swing.JLabel NomeCronos;
     private javax.swing.JLabel NomeHb20;
     private javax.swing.JLabel NomeVersa;
+    private javax.swing.JButton Proximo;
     private javax.swing.JLabel RetiradaCronos;
     private javax.swing.JLabel RetiradaHb20;
     private javax.swing.JLabel RetiradaVersa;
     private javax.swing.JLabel ValorCronos;
     private javax.swing.JLabel ValorHb20;
     private javax.swing.JLabel ValorVersa;
+    private javax.swing.JButton Voltar;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

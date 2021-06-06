@@ -63,6 +63,7 @@ public class Locacao extends javax.swing.JFrame {
         HoraRetirada = new javax.swing.JLabel();
         DataDevolucao = new javax.swing.JLabel();
         HoraDevolucao = new javax.swing.JLabel();
+        Voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +143,10 @@ public class Locacao extends javax.swing.JFrame {
         HoraDevolucao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         HoraDevolucao.setText("Hora");
 
+        Voltar.setBackground(new java.awt.Color(255, 255, 0));
+        Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        Voltar.setText("Voltar");
+
         javax.swing.GroupLayout RgClienteLayout = new javax.swing.GroupLayout(RgCliente);
         RgCliente.setLayout(RgClienteLayout);
         RgClienteLayout.setHorizontalGroup(
@@ -167,7 +172,6 @@ public class Locacao extends javax.swing.JFrame {
                                 .addGroup(RgClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(ModeloCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Alugar)
                                     .addComponent(jLabel10)
                                     .addGroup(RgClienteLayout.createSequentialGroup()
                                         .addComponent(DataDevolucao)
@@ -187,6 +191,12 @@ public class Locacao extends javax.swing.JFrame {
                         .addComponent(LocalCarro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                         .addComponent(PlacaCarro, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RgClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152)
+                .addComponent(Alugar)
+                .addGap(228, 228, 228))
         );
         RgClienteLayout.setVerticalGroup(
             RgClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,12 +236,14 @@ public class Locacao extends javax.swing.JFrame {
                                 .addComponent(DataRetirada)
                                 .addComponent(HoraRetirada)
                                 .addComponent(DataDevolucao)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(Alugar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
+                        .addGap(40, 133, Short.MAX_VALUE))
                     .addGroup(RgClienteLayout.createSequentialGroup()
                         .addComponent(HoraDevolucao)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(RgClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Alugar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Voltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(45, 45, 45))))
         );
 
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -339,6 +351,7 @@ public class Locacao extends javax.swing.JFrame {
     private javax.swing.JTextField NomeClienteAlugar;
     private javax.swing.JTextField PlacaCarro;
     private javax.swing.JPanel RgCliente;
+    private javax.swing.JButton Voltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
