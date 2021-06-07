@@ -79,4 +79,23 @@ public class ClienteService {
         clientes.stream().sorted();
         return clientes.get(clientes.size()-1).getId()+1;
     }
+
+    public Cliente consultarPorNome(String nomeCliente) {
+        Cliente clienteRetorno = null;
+        for (Cliente cliente: clientes) {
+            if(cliente.getNome().equalsIgnoreCase(nomeCliente)){
+                clienteRetorno = cliente;
+            }
+        }
+        return clienteRetorno;
+    }
+
+    public static void inserirCliente(){
+        Cliente cliente1 = new Cliente(gerarId(), "Romilson", 123456L, "teste", "123", 12L, 12L, "DF", "teste", "teste","Teste");
+        Cliente cliente2 = new Cliente(gerarId(), "Laura", 456L, "teste", "123", 12L, 12L, "DF", "teste", "teste","Teste");
+        Cliente cliente3 = new Cliente(gerarId(), "Vagner", 123L, "teste", "123", 12L, 12L, "DF", "teste", "teste","Teste");
+        clientes.add(cliente1);
+        clientes.add(cliente2);
+        clientes.add(cliente3);
+    }
 }

@@ -4,13 +4,23 @@
  * and open the template in the editor.
  */
 package projeto;
+import model.Carro;
+import model.EnumModelo;
 import routes.Routes;
+import service.CarroService;
 import service.UsuarioService;
+import service.Utils;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,23 +32,27 @@ public class Catalago1 extends javax.swing.JFrame {
     private Routes rotas = new Routes();
     private UsuarioService usuarioService = new UsuarioService();
 
+    private Long diasAluguel = 0L;
+    private CarroService carroService = new CarroService();
+
+    Carro gol = new Carro();
+    Carro kwid = new Carro();
+    Carro uno = new Carro();
+
+    DecimalFormat df = new DecimalFormat("#,###.##",new DecimalFormatSymbols(Locale.GERMAN));
+
     /**
      * Creates new form Catalago1
      */
     public Catalago1() {
         if(DadosSession.existeUsuarioLogado()){
+            diasAluguel = Utils.calcularDiasAluguel();
             initComponents();
-            calcularValorAluguel();
         } else {
+            fecharCatalogo1();
             rotas.goLogin();
         }
 
-    }
-
-    private void calcularValorAluguel() {
-        System.out.println(DadosSession.getDataRetirada());
-        //Date dataRetirada = new Date(DadosSession.getDataRetirada());
-        //Date dataDevolucao = new Date(DadosSession.getDataDevolucao());
     }
 
     /**
@@ -50,6 +64,7 @@ public class Catalago1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -109,13 +124,18 @@ public class Catalago1 extends javax.swing.JFrame {
         CardGol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         NomeGol.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeGol.setText("VW GOL 1.0");
+        NomeGol.setText(EnumModelo.GOL.getModelo());
 
         FotoGol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Gol.png"))); // NOI18N
 
         AlugarGol.setBackground(new java.awt.Color(255, 255, 51));
         AlugarGol.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarGol.setText("Alugar");
+        AlugarGol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarGol(evt);
+            }
+        });
 
         RetiradaGol.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaGol.setText("Retirada");
@@ -123,17 +143,17 @@ public class Catalago1 extends javax.swing.JFrame {
         DevolucaoGol.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoGol.setText("Devolução");
 
-        DataRetiradaGol.setText("Data");
+        DataRetiradaGol.setText(DadosSession.getDataRetirada());
 
-        HoraRetiradaGol.setText("Hora");
+        HoraRetiradaGol.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        DataDevolucaoGol.setText("Data");
+        DataDevolucaoGol.setText(DadosSession.getDataDevolucao());
 
-        HoraDevolucaoGol.setText("Hora");
+        HoraDevolucaoGol.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalGol.setText("Local");
-
-        ValorGol.setText("Valor");
+        LocalGol.setText(DadosSession.getAgencia());
+        gol = CarroService.consultarPorMarca(EnumModelo.GOL.getModelo()).get(0);
+        ValorGol.setText(Utils.calcularValorAluguel(gol, diasAluguel));
 
         javax.swing.GroupLayout CardGolLayout = new javax.swing.GroupLayout(CardGol);
         CardGol.setLayout(CardGolLayout);
@@ -204,13 +224,18 @@ public class Catalago1 extends javax.swing.JFrame {
         );
 
         NomeKwid.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeKwid.setText("Kwid 1.0");
+        NomeKwid.setText(EnumModelo.KWUID.getModelo());
 
         FotoKwid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/kwid.png"))); // NOI18N
 
         AlugarKwid.setBackground(new java.awt.Color(255, 255, 0));
         AlugarKwid.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarKwid.setText("Alugar");
+        AlugarKwid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarKwid(evt);
+            }
+        });
 
         RetiradaKwid.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaKwid.setText("Retirada");
@@ -218,17 +243,18 @@ public class Catalago1 extends javax.swing.JFrame {
         DevolucaoKwid.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoKwid.setText("Devolução");
 
-        DataRetiradaKwid.setText("Data");
+        DataRetiradaKwid.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoKwid.setText("Data");
+        DataDevolucaoKwid.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaKwid.setText("Hora");
+        HoraRetiradaKwid.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaooKwid.setText("Hora");
+        HoraDevolucaooKwid.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalKwid.setText("Local");
+        LocalKwid.setText(DadosSession.getAgencia());
 
-        ValorKwid.setText("Valor");
+        kwid = carroService.consultarPorMarca(EnumModelo.KWUID.getModelo()).get(0);
+        ValorKwid.setText(Utils.calcularValorAluguel(kwid,diasAluguel));
 
         javax.swing.GroupLayout CardKwidLayout = new javax.swing.GroupLayout(CardKwid);
         CardKwid.setLayout(CardKwidLayout);
@@ -300,31 +326,36 @@ public class Catalago1 extends javax.swing.JFrame {
         );
 
         NomeUno.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeUno.setText("Uno 1.0");
+        NomeUno.setText(EnumModelo.UNO.getModelo());
 
         FotoUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uno.png"))); // NOI18N
 
         AlugarUno.setBackground(new java.awt.Color(255, 255, 0));
         AlugarUno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarUno.setText("Alugar");
-
+        AlugarUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarUno(evt);
+            }
+        });
         RetiradaUno.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaUno.setText("Retirada");
 
         DevolucaoUno.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoUno.setText("Devolução");
 
-        DataRetiradaUno.setText("Data");
+        DataRetiradaUno.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoUno.setText("Data");
+        DataDevolucaoUno.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaUno.setText("Hora");
+        HoraRetiradaUno.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoUno.setText("Hora");
+        HoraDevolucaoUno.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalUno.setText("Local");
+        LocalUno.setText(DadosSession.getAgencia());
 
-        ValorUno.setText("Valor");
+        uno = carroService.consultarPorMarca(EnumModelo.UNO.getModelo()).get(0);
+        ValorUno.setText(Utils.calcularValorAluguel(uno, diasAluguel));
 
         javax.swing.GroupLayout CardUnoLayout = new javax.swing.GroupLayout(CardUno);
         CardUno.setLayout(CardUnoLayout);
@@ -497,6 +528,27 @@ public class Catalago1 extends javax.swing.JFrame {
     private void proximo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goCatalogo2();
         fecharCatalogo1();
+    }
+
+    private void alugar(){
+        DadosSession.setCatalogo(1);
+        this.rotas.goLotacao();
+        fecharCatalogo1();
+    }
+
+    private void alugarGol(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        DadosSession.setCarroAluguel(gol);
+        alugar();
+    }
+
+    private void alugarKwid(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        DadosSession.setCarroAluguel(kwid);
+        alugar();
+    }
+
+    private void alugarUno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        DadosSession.setCarroAluguel(uno);
+        alugar();
     }
 
     private void fecharCatalogo1() {

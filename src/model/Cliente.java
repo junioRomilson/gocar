@@ -15,6 +15,21 @@ public class Cliente {
 
     public Cliente() {}
 
+    public Cliente(Long id,String nome, Long cpf, String email, String contato,
+                   Long rg, Long cep, String uf, String logradouro, String bairro, String cidade) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.contato = contato;
+        this.rg = rg;
+        this.cep = cep;
+        this.uf = uf;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.cidade = cidade;
+    }
+
     public Cliente(String nome, Long cpf, String email, String contato,
                    Long rg, Long cep, String uf, String logradouro, String bairro, String cidade) {
         this.nome = nome;

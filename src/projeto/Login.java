@@ -7,10 +7,12 @@ package projeto;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import routes.Routes;
+import service.Alerta;
 import service.UsuarioService;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
 
 
@@ -37,7 +39,7 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jLayeredPane1 = new javax.swing.JLayeredPane(){
@@ -79,6 +81,21 @@ public class Login extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrar(evt);
+            }
+        });
+        jButton1.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                entrar(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
 
@@ -184,11 +201,19 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void entrar(java.awt.event.ActionEvent evt){
+        logar();
+    }
+
+    private void entrar(KeyEvent e) {
+        logar();
+    }
+
+    private void logar(){
         if(usuarioService.validarLogin( Usuario.getText(), new String(Senha.getPassword()))){
             this.rotas.goHome();
             fechaTelaLogin();
         } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou Senha inválido!");
+            Alerta.ERROR("Erro", "Usuário ou Senha inválido!");
             limparCampos();
         }
     }

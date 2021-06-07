@@ -6,14 +6,19 @@
 package projeto;
 import model.Cliente;
 import routes.Routes;
+import service.Alerta;
 import service.ClienteService;
 import service.UsuarioService;
+import service.Utils;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.ParseException;
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -24,6 +29,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private Routes rotas = new Routes();
     private UsuarioService usuarioService = new UsuarioService();
     private ClienteService clienteService = new ClienteService();
+    private String[] ufs;
 
     /**
      * Creates new form CadastroCliente
@@ -33,6 +39,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
+            fecharTelaCadastroCliente();
             this.rotas.goLogin();
         }
     }
@@ -45,6 +52,8 @@ public class CadastroCliente extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
+        ufs = Utils.listarUFs();
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
@@ -59,16 +68,22 @@ public class CadastroCliente extends javax.swing.JFrame {
         Nome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        Contato = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        Cpf = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();//Label para contato
+        jLabel5 = new javax.swing.JLabel();//Label para CPF
+        jLabel7 = new javax.swing.JLabel();//Label para CEP
+
+        try{
+            Contato = new javax.swing.JFormattedTextField(Utils.getMascaraTelefone());
+            Cpf = new javax.swing.JFormattedTextField(Utils.getMascaraCPF());
+            Cep = new javax.swing.JFormattedTextField(Utils.getMascaraCEP());
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
         jLabel6 = new javax.swing.JLabel();
         Rg = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        Cep = new javax.swing.JTextField();
+
         jLabel8 = new javax.swing.JLabel();
-        Uf = new javax.swing.JTextField();
+        Uf = new javax.swing.JComboBox(ufs);
         jLabel9 = new javax.swing.JLabel();
         Logadouro = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -91,11 +106,6 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         Nome.setBackground(new java.awt.Color(255, 255, 204));
         Nome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomeActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setText("E-mail");
@@ -114,9 +124,34 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         Cpf.setBackground(new java.awt.Color(255, 255, 204));
         Cpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Cpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CpfActionPerformed(evt);
+        Cpf.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String cpf = Cpf.getText().replace(".","").replace("-","");
+                StringBuilder cpfDigitado = new StringBuilder();
+
+                for (int i = 0; i < cpf.length(); i++) {
+                    char letraDigitada = cpf.charAt(i);
+                    if(letraDigitada != ' '){
+                        cpfDigitado.append(letraDigitada);
+                    }
+                }
+
+                if(cpfDigitado.length() == 11){
+                    if(!Utils.valiadarCpf(new String(cpfDigitado))){
+                        Alerta.ERROR("Erro", "CPF "+Utils.imprimirCpf(new String(cpfDigitado))+" Inválido!");
+                        Cpf.setText("");
+                    }
+                }
             }
         });
 
@@ -163,6 +198,21 @@ public class CadastroCliente extends javax.swing.JFrame {
                 CadastrarClienteActionPerformed(evt);
             }
         });
+        CadastrarCliente.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                CadastrarClienteActionPerformed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -170,6 +220,21 @@ public class CadastroCliente extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarHome(evt);
+            }
+        });
+        jButton1.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                voltarHome(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
 
@@ -241,7 +306,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                         .addComponent(jLabel8))
                                     .addGroup(CidadeLayout.createSequentialGroup()
                                         .addGap(110, 110, 110)
-                                        .addComponent(Uf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(Uf, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(CidadeLayout.createSequentialGroup()
                                 .addGap(85, 85, 85)
                                 .addComponent(CadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -351,38 +416,56 @@ public class CadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NomeActionPerformed
-
-    private void CpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CpfActionPerformed
-
-    private void CadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-
-        Cliente cliente = criarClienteTela();
-        if(clienteService.jaExiste(cliente.getCpf())){
-            JOptionPane.showMessageDialog(null, "Cliente Já Cadastrado!");
-        } else {
-            if(clienteService.adicionar(cliente)){
-                JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Cliente Já Cadastrado!");
-            }
-        }
-        fecharTelaCadastroCliente();
+    private void voltarHome() {
         this.rotas.goHome();
+        fecharTelaCadastroCliente();
+    }
 
+    private void cadastrar() {
+        Cliente cliente = criarClienteTela();
+        if(cliente == null){
+            Alerta.WARNING("Alerta", "Informe todos os campos!");
+        } else {
+            if(clienteService.jaExiste(cliente.getCpf())){
+                Alerta.WARNING("Alerta","Cliente Já Cadastrado!");
+            } else {
+                if(clienteService.adicionar(cliente)){
+                    Alerta.SUCESSO("Sucesso", "Cliente Cadastrado com Sucesso!");
+                } else {
+                    Alerta.ERROR("Erro", "Cliente Já Cadastrado!");
+                }
+            }
+            fecharTelaCadastroCliente();
+            this.rotas.goHome();
+        }
+    }
+
+    private void CadastrarClienteActionPerformed(KeyEvent e) {
+        cadastrar();
+    }
+    private void CadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {
+        cadastrar();
+    }
+
+    private void voltarHome(KeyEvent e) {
+        voltarHome();
+    }
+    private void voltarHome(ActionEvent evt){
+        voltarHome();
     }
 
     private Cliente criarClienteTela() {
-        return new Cliente(Nome.getText(), Long.valueOf(Cpf.getText()),Email.getText(), Contato.getText(),
-                Long.valueOf(Rg.getText()),Long.valueOf(Cep.getText()), Uf.getText(), Logadouro.getText(), Bairro.getText(),Cidade.getName());
-    }
-    private void voltarHome(ActionEvent evt){
-        this.rotas.goHome();
-        fecharTelaCadastroCliente();
+        String stringCpf = Cpf.getText().replace(".","").replace("-", "");
+        String stringCep = Cep.getText().replace(".","").replace("-", "");
+        if(Nome.getText().equals(" ") || stringCpf.equals("           ") || Email.getText().equals(" ") ||
+            Contato.getText().equals(" ") || Rg.getText().equals(" ") || Cep.getText().equals("        ") ||
+            Logadouro.getText().equals(" ") || Bairro.getText().equals(" ") || jTextField1.getText().equals(" ")){
+            return null;
+        }
+        Long cpf = Long.valueOf(stringCpf);
+        Long cep = Long.valueOf(stringCep);
+        return new Cliente(Nome.getText(), cpf,Email.getText(), Contato.getText(),
+                Long.valueOf(Rg.getText()),cep, ufs[Uf.getSelectedIndex()], Logadouro.getText(), Bairro.getText(), jTextField1.getText());
     }
 
     private void fecharTelaCadastroCliente(){
@@ -427,15 +510,15 @@ public class CadastroCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Bairro;
     private javax.swing.JButton CadastrarCliente;
-    private javax.swing.JTextField Cep;
+    private javax.swing.JFormattedTextField Cep;
     private javax.swing.JPanel Cidade;
-    private javax.swing.JTextField Contato;
-    private javax.swing.JTextField Cpf;
+    private javax.swing.JFormattedTextField Contato;
+    private javax.swing.JFormattedTextField Cpf;
     private javax.swing.JTextField Email;
     private javax.swing.JTextField Logadouro;
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField Rg;
-    private javax.swing.JTextField Uf;
+    private javax.swing.JComboBox Uf;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -6,7 +6,20 @@ public class Carro {
     private Double valor;
     private int ano;
     private String placa;
+    private String grupo;
 
+    public Carro() {
+
+    }
+
+    public Carro(Long id, String marca, Double valor, int ano, String placa, String grupo) {
+        this.id = id;
+        this.marca = marca;
+        this.valor = valor;
+        this.ano = ano;
+        this.placa = placa;
+        this.grupo = grupo;
+    }
 
     public Long getId() {
         return id;
@@ -47,4 +60,13 @@ public class Carro {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
 }

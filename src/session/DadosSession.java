@@ -1,5 +1,7 @@
 package session;
 
+import model.Carro;
+import model.Cliente;
 import model.Usuario;
 
 public class DadosSession {
@@ -13,6 +15,44 @@ public class DadosSession {
     public static String horaDevolucao;
     public static Double valorAluguel;
     public static String agencia;
+
+    public static Carro carroAluguel;
+    public static Integer catalogo;
+
+    public static Cliente cliente;
+    public static int indexCliente;
+
+    public static Cliente getCliente() {
+        return cliente;
+    }
+
+    public static void setCliente(Cliente cliente) {
+        DadosSession.cliente = cliente;
+    }
+
+    public static int getIndexCliente() {
+        return indexCliente;
+    }
+
+    public static void setIndexCliente(int indexCliente) {
+        DadosSession.indexCliente = indexCliente;
+    }
+
+    public static Carro getCarroAluguel() {
+        return carroAluguel;
+    }
+
+    public static void setCarroAluguel(Carro carroAluguel) {
+        DadosSession.carroAluguel = carroAluguel;
+    }
+
+    public static Integer getCatalogo() {
+        return catalogo;
+    }
+
+    public static void setCatalogo(Integer catalogo) {
+        DadosSession.catalogo = catalogo;
+    }
 
     public static String getDataRetirada() {
         return dataRetirada;

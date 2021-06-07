@@ -2,6 +2,7 @@ package service;
 
 import model.Carro;
 import model.Cliente;
+import model.EnumModelo;
 
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicReference;
@@ -53,9 +54,9 @@ public class CarroService {
     }
 
     public static LinkedList<Carro> consultarPorMarca(String marca){
-        LinkedList<Carro> carrosRetorno = null;
+        LinkedList<Carro> carrosRetorno = new LinkedList<>();
         for (Carro carro: carros) {
-            if(carro.getMarca().equalsIgnoreCase(marca)){
+            if(carro.getMarca().equals(marca)){
                 carrosRetorno.add(carro);
             }
         }
@@ -89,5 +90,35 @@ public class CarroService {
         }
         carros.stream().sorted();
         return carros.get(carros.size()-1).getId()+1;
+    }
+
+    public static void inserirCarros(){
+        Carro gol =
+            new Carro(gerarId(), EnumModelo.GOL.getModelo(), 399.00, 2021, "AAA-1111", "A");
+        Carro kwid =
+            new Carro(gerarId(),EnumModelo.KWUID.getModelo(), 300.00, 2020, "AAA-2222", "A");
+        Carro uno =
+                new Carro(gerarId(),EnumModelo.UNO.getModelo(), 359.00, 2017, "AAA-3333", "A");
+        Carro hb20s =
+                new Carro(gerarId(),EnumModelo.HB20.getModelo(), 499.00, 2021, "BBB-1111", "FS");
+        Carro cronos =
+                new Carro(gerarId(),EnumModelo.CRONOS.getModelo(), 400.00, 2020, "BBB-2222", "FS");
+        Carro nissan =
+                new Carro(gerarId(),EnumModelo.NISSAN_VERSA.getModelo(), 459.00, 2017, "BBB-3333", "FS");
+        Carro citroen =
+                new Carro(gerarId(),EnumModelo.CITROEN_CACTOS.getModelo(), 699.00, 2021, "CCC-1111", "GC");
+        Carro kicks =
+                new Carro(gerarId(),EnumModelo.KICKS.getModelo(), 600.00, 2020, "CCC-2222", "GC");
+        Carro duster =
+                new Carro(gerarId(),EnumModelo.DUSTER.getModelo(), 659.00, 2017, "CCC-3333", "GC");
+        carros.add(gol);
+        carros.add(kwid);
+        carros.add(uno);
+        carros.add(hb20s);
+        carros.add(cronos);
+        carros.add(nissan);
+        carros.add(citroen);
+        carros.add(kicks);
+        carros.add(duster);
     }
 }

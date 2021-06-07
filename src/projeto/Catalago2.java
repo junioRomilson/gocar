@@ -4,12 +4,19 @@
  * and open the template in the editor.
  */
 package projeto;
+import model.Carro;
+import model.EnumModelo;
 import routes.Routes;
+import service.CarroService;
 import service.UsuarioService;
+import service.Utils;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,14 +28,22 @@ public class Catalago2 extends javax.swing.JFrame {
     private Routes rotas = new Routes();
     private UsuarioService usuarioService = new UsuarioService();
 
+    private Long diasAluguel = 0L;
+    private CarroService carroService = new CarroService();
+
+    Carro hb20 = new Carro();
+    Carro cronos = new Carro();
+    Carro nissan = new Carro();
+
     /**
      * Creates new form Catalago1
      */
     public Catalago2() {
         if(DadosSession.existeUsuarioLogado()){
+            diasAluguel = Utils.calcularDiasAluguel();
             initComponents();
-            calcularValorAluguel();
         } else {
+            fecharCatalogo2();
             rotas.goLogin();
         }
     }
@@ -41,7 +56,7 @@ public class Catalago2 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -109,6 +124,11 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarHb20.setBackground(new java.awt.Color(255, 255, 51));
         AlugarHb20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarHb20.setText("Alugar");
+        AlugarHb20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarHB20(evt);
+            }
+        });
 
         RetiradaHb20.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaHb20.setText("Retirada");
@@ -116,17 +136,20 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoHb20.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoHb20.setText("Devolução");
 
-        DataRetiradaHb20.setText("Data");
+        DataRetiradaHb20.setText(DadosSession.getDataRetirada());
 
-        HoraRetiradaHb20.setText("Hora");
+        HoraRetiradaHb20.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        DataDevolucaoHb20.setText("Data");
+        DataDevolucaoHb20.setText(DadosSession.getDataDevolucao());
 
-        HoraDevolucaoHb20.setText("Hora");
+        HoraDevolucaoHb20.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalHb20.setText("Local");
+        LocalHb20.setText(DadosSession.getAgencia());
 
-        ValorHb20.setText("Valor");
+        hb20 = CarroService.consultarPorMarca(EnumModelo.HB20.getModelo()).get(0);
+        ValorHb20.setText(Utils.calcularValorAluguel(hb20, diasAluguel));
+
+
 
         javax.swing.GroupLayout CardHb20Layout = new javax.swing.GroupLayout(CardHb20);
         CardHb20.setLayout(CardHb20Layout);
@@ -205,6 +228,11 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarCronos.setBackground(new java.awt.Color(255, 255, 0));
         AlugarCronos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarCronos.setText("Alugar");
+        AlugarCronos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarCronos(evt);
+            }
+        });
 
         RetiradaCronos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaCronos.setText("Retirada");
@@ -212,17 +240,18 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoCronos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoCronos.setText("Devolução");
 
-        DataRetiradaCronos.setText("Data");
+        DataRetiradaCronos.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoCronos.setText("Data");
+        DataDevolucaoCronos.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaCronos.setText("Hora");
+        HoraRetiradaCronos.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoCronos.setText("Hora");
+        HoraDevolucaoCronos.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalCronos.setText("Local");
+        LocalCronos.setText(DadosSession.getAgencia());
 
-        ValorCronos.setText("Valor");
+        cronos = carroService.consultarPorMarca(EnumModelo.CRONOS.getModelo()).get(0);
+        ValorCronos.setText(Utils.calcularValorAluguel(cronos, diasAluguel));
 
         javax.swing.GroupLayout CardCronosLayout = new javax.swing.GroupLayout(CardCronos);
         CardCronos.setLayout(CardCronosLayout);
@@ -301,24 +330,29 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarVersa.setBackground(new java.awt.Color(255, 255, 0));
         AlugarVersa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarVersa.setText("Alugar");
-
+        AlugarVersa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarNissanVersa(evt);
+            }
+        });
         RetiradaVersa.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaVersa.setText("Retirada");
 
         DevolucaoVersa.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoVersa.setText("Devolução");
 
-        DataRetiradaVersa.setText("Data");
+        DataRetiradaVersa.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoVersa.setText("Data");
+        DataDevolucaoVersa.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaVersa.setText("Hora");
+        HoraRetiradaVersa.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoVersa.setText("Hora");
+        HoraDevolucaoVersa.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalVersa.setText("Local");
+        LocalVersa.setText(DadosSession.getAgencia());
 
-        ValorVersa.setText("Valor");
+        nissan = carroService.consultarPorMarca(EnumModelo.NISSAN_VERSA.getModelo()).get(0);
+        ValorVersa.setText(Utils.calcularValorAluguel(nissan, diasAluguel));
 
         javax.swing.GroupLayout CardVersaLayout = new javax.swing.GroupLayout(CardVersa);
         CardVersa.setLayout(CardVersaLayout);
@@ -500,10 +534,25 @@ public class Catalago2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcularValorAluguel() {
-        System.out.println(DadosSession.getDataRetirada());
-        //Date dataRetirada = new Date(DadosSession.getDataRetirada());
-        //Date dataDevolucao = new Date(DadosSession.getDataDevolucao());
+    private void alugar(){
+        DadosSession.setCatalogo(2);
+        this.rotas.goLotacao();
+        fecharCatalogo2();
+    }
+
+    private void alugarNissanVersa(ActionEvent evt) {
+        DadosSession.setCarroAluguel(nissan);
+        alugar();
+    }
+
+    private void alugarCronos(ActionEvent evt) {
+        DadosSession.setCarroAluguel(cronos);
+        alugar();
+    }
+
+    private void alugarHB20(ActionEvent evt) {
+        DadosSession.setCarroAluguel(hb20);
+        alugar();
     }
 
     private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed

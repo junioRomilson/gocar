@@ -6,6 +6,7 @@
 package projeto;
 import model.Aluguel;
 import routes.Routes;
+import service.Alerta;
 import service.AluguelService;
 import service.UsuarioService;
 import session.DadosSession;
@@ -31,8 +32,15 @@ public class Listar extends javax.swing.JFrame {
      */
     public Listar() {
         if(DadosSession.existeUsuarioLogado()){
-            initComponents();
+            if (aluguelService.listar().isEmpty()){
+                Alerta.ERROR("Erro", "Nenhum Registro Encontrado");
+                fecharTelaListar();
+                this.rotas.goHome();
+            } else {
+                initComponents();
+            }
         } else {
+            fecharTelaListar();
             this.rotas.goLogin();
         }
 
@@ -46,7 +54,7 @@ public class Listar extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         jLayeredPane1 = new javax.swing.JLayeredPane();
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
