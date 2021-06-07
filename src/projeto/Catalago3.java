@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package projeto;
+import model.Carro;
+import model.EnumModelo;
 import routes.Routes;
+import service.CarroService;
 import service.UsuarioService;
+import service.Utils;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,14 +25,22 @@ public class Catalago3 extends javax.swing.JFrame {
     private Routes rotas = new Routes();
     private UsuarioService usuarioService = new UsuarioService();
 
+    private Long diasAluguel = 0L;
+    private CarroService carroService = new CarroService();
+
+    Carro citroen = new Carro();
+    Carro kicks = new Carro();
+    Carro duster = new Carro();
+
     /**
      * Creates new form Catalago1
      */
     public Catalago3() {
         if(DadosSession.existeUsuarioLogado()){
+            diasAluguel = Utils.calcularDiasAluguel();
             initComponents();
-            calcularValorAluguel();
         } else {
+            fecharCatalogo3();
             rotas.goLogin();
         }
     }
@@ -41,7 +53,7 @@ public class Catalago3 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -108,6 +120,11 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarCactos.setBackground(new java.awt.Color(255, 255, 51));
         AlugarCactos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarCactos.setText("Alugar");
+        AlugarCactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarCitroenCactos(evt);
+            }
+        });
 
         RetiradaCactos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaCactos.setText("Retirada");
@@ -115,17 +132,18 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoCactos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoCactos.setText("Devolução");
 
-        DataRetiradaCactos.setText("Data");
+        DataRetiradaCactos.setText(DadosSession.getDataRetirada());
 
-        HoraRetiradaCactos.setText("Hora");
+        HoraRetiradaCactos.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        DataDevolucaoCactos.setText("Data");
+        DataDevolucaoCactos.setText(DadosSession.getDataDevolucao());
 
-        HoraDevolucaoCactos.setText("Hora");
+        HoraDevolucaoCactos.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalCactos.setText("Local");
+        LocalCactos.setText(DadosSession.getAgencia());
 
-        ValorCactos.setText("Valor");
+        citroen = carroService.consultarPorMarca(EnumModelo.CITROEN_CACTOS.getModelo()).get(0);
+        ValorCactos.setText(Utils.calcularValorAluguel(citroen, diasAluguel));
 
         javax.swing.GroupLayout CardCactosLayout = new javax.swing.GroupLayout(CardCactos);
         CardCactos.setLayout(CardCactosLayout);
@@ -203,6 +221,11 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarKicks.setBackground(new java.awt.Color(255, 255, 0));
         AlugarKicks.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarKicks.setText("Alugar");
+        AlugarKicks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarKicks(evt);
+            }
+        });
 
         RetiradaKicks.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaKicks.setText("Retirada");
@@ -210,17 +233,18 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoKicks.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoKicks.setText("Devolução");
 
-        DataRetiradaKicks.setText("Data");
+        DataRetiradaKicks.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoKicks.setText("Data");
+        DataDevolucaoKicks.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaKicks.setText("Hora");
+        HoraRetiradaKicks.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoKicks.setText("Hora");
+        HoraDevolucaoKicks.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalKicks.setText("Local");
+        LocalKicks.setText(DadosSession.getAgencia());
 
-        ValorKicks.setText("Valor");
+        kicks = carroService.consultarPorMarca(EnumModelo.KICKS.getModelo()).get(0);
+        ValorKicks.setText(Utils.calcularValorAluguel(kicks,diasAluguel));
 
         javax.swing.GroupLayout CardKicksLayout = new javax.swing.GroupLayout(CardKicks);
         CardKicks.setLayout(CardKicksLayout);
@@ -297,6 +321,11 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarDuster.setBackground(new java.awt.Color(255, 255, 0));
         AlugarDuster.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarDuster.setText("Alugar");
+        AlugarDuster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarDuster(evt);
+            }
+        });
 
         RetiradaDuster.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaDuster.setText("Retirada");
@@ -304,17 +333,18 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoDuster.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoDuster.setText("Devolução");
 
-        DataRetiradaDuster.setText("Data");
+        DataRetiradaDuster.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoDuster.setText("Data");
+        DataDevolucaoDuster.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaDuster.setText("Hora");
+        HoraRetiradaDuster.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoDuster.setText("Hora");
+        HoraDevolucaoDuster.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalDuster.setText("Local");
+        LocalDuster.setText(DadosSession.getAgencia());
 
-        ValorDuster.setText("Valor");
+        duster = carroService.consultarPorMarca(EnumModelo.DUSTER.getModelo()).get(0);
+        ValorDuster.setText(Utils.calcularValorAluguel(duster, diasAluguel));
 
         javax.swing.GroupLayout CardDusterLayout = new javax.swing.GroupLayout(CardDuster);
         CardDuster.setLayout(CardDusterLayout);
@@ -480,10 +510,25 @@ public class Catalago3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcularValorAluguel() {
-        System.out.println(DadosSession.getDataRetirada());
-        //Date dataRetirada = new Date(DadosSession.getDataRetirada());
-        //Date dataDevolucao = new Date(DadosSession.getDataDevolucao());
+    private void alugar(){
+        DadosSession.setCatalogo(3);
+        this.rotas.goLotacao();
+        fecharCatalogo3();
+    }
+
+    private void alugarKicks(ActionEvent evt) {
+        DadosSession.setCarroAluguel(kicks);
+        alugar();
+    }
+
+    private void alugarDuster(ActionEvent evt) {
+        DadosSession.setCarroAluguel(duster);
+        alugar();
+    }
+
+    private void alugarCitroenCactos(ActionEvent evt) {
+        DadosSession.setCarroAluguel(citroen);
+        alugar();
     }
 
     private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed

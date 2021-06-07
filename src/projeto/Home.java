@@ -8,8 +8,9 @@ import routes.Routes;
 import service.UsuarioService;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 
 
@@ -30,6 +31,7 @@ public class Home extends javax.swing.JFrame {
         if(DadosSession.existeUsuarioLogado()){
             initComponents();
         } else {
+            fecharTelaHome();
             this.rotas.goLogin();
         }
 
@@ -43,7 +45,7 @@ public class Home extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/logo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -69,6 +71,21 @@ public class Home extends javax.swing.JFrame {
                 cadastrarCliente(evt);
             }
         });
+        CadastrarCliente.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                cadastrarCliente(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
         Alugar.setBackground(new java.awt.Color(0, 0, 0));
         Alugar.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
@@ -79,7 +96,21 @@ public class Home extends javax.swing.JFrame {
                 alugar(evt);
             }
         });
+        Alugar.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
 
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                alugar(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bem-Vindo a GOcar! O melhor App para alugar um automóvel. ");
@@ -91,6 +122,21 @@ public class Home extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAlugueis(evt);
+            }
+        });
+        jButton1.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                consultarAlugueis(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
 
@@ -145,19 +191,38 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastrarCliente(java.awt.event.ActionEvent evt) {
+    private void cadastrar(){
         this.rotas.goCadastroCliente();
         fecharTelaHome();
     }
 
-    private void alugar(java.awt.event.ActionEvent evt) {
+    private void alugar() {
         this.rotas.goAlugar();
         fecharTelaHome();
     }
 
-    private void consultarAlugueis(java.awt.event.ActionEvent evt) {
+    private void consultarAlugueis() {
         this.rotas.goListar();
         fecharTelaHome();
+    }
+
+    private void cadastrarCliente(KeyEvent e) {
+        cadastrar();
+    }
+    private void cadastrarCliente(java.awt.event.ActionEvent evt) {
+        cadastrar();
+    }
+    private void alugar(java.awt.event.ActionEvent evt) {
+        alugar();
+    }
+    private void alugar(KeyEvent e) {
+        alugar();
+    }
+    private void consultarAlugueis(java.awt.event.ActionEvent evt) {
+        consultarAlugueis();
+    }
+    private void consultarAlugueis(KeyEvent e) {
+        consultarAlugueis();
     }
 
     private void fecharTelaHome() {

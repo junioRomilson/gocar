@@ -5,13 +5,15 @@
  */
 package projeto;
 import routes.Routes;
+import service.Alerta;
 import service.ClienteService;
 import service.UsuarioService;
+import service.Utils;
 import session.DadosSession;
 
-import java.awt.Image;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
 import javax.swing.*;
 
 /**
@@ -22,6 +24,7 @@ public class Alugar extends javax.swing.JFrame {
 
     private Routes rotas = new Routes();
     private UsuarioService usuarioService = new UsuarioService();
+    private ClienteService clienteService = new ClienteService();
 
     /**
      * Creates new form Alugar
@@ -29,8 +32,14 @@ public class Alugar extends javax.swing.JFrame {
     public Alugar() {
 
         if(DadosSession.existeUsuarioLogado()){
-            initComponents();
+            if(clienteService.listar().isEmpty()){
+                Alerta.ERROR("Erro", "Não exite clientes cadastrados. \nPara prosseguir é necessário cadastrar um cliente!");
+                this.rotas.goCadastroCliente();
+            } else {
+                initComponents();
+            }
         } else {
+            fecharTelaAlugar();
             this.rotas.goLogin();
         }
     }
@@ -43,7 +52,7 @@ public class Alugar extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/logo.png"));
         Image image = icon.getImage();
         HoraDevolucao = new javax.swing.JLayeredPane(){
@@ -58,10 +67,15 @@ public class Alugar extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         LocalRetirada = new javax.swing.JTextField();
-        DataRetirada = new javax.swing.JTextField();
-        HoraRetirada = new javax.swing.JTextField();
-        DataDevolucao = new javax.swing.JTextField();
-        HoraD = new javax.swing.JTextField();
+        try{
+            DataRetirada = new javax.swing.JFormattedTextField(Utils.getMascaraData());
+            DataDevolucao = new javax.swing.JFormattedTextField(Utils.getMascaraData());
+            HoraRetirada = new javax.swing.JFormattedTextField(Utils.getMascaraHora());
+            HoraD = new javax.swing.JFormattedTextField(Utils.getMascaraHora());
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +120,7 @@ public class Alugar extends javax.swing.JFrame {
         DataDevolucao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         HoraD.setBackground(new java.awt.Color(255, 255, 204));
+        HoraD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         HoraDevolucao.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -196,21 +211,27 @@ public class Alugar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DataRetiradaActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        System.out.println(DataRetirada.getText());
-    }
 
     private void alugar(java.awt.event.ActionEvent evt){
 
-        DadosSession.setDataRetirada(DataRetirada.getText());
-        DadosSession.setDataDevolucao(DataDevolucao.getText());
+        if(DataRetirada.getText().equals("") && DataDevolucao.getText().equals("")
+            && HoraRetirada.getText().equals("") && HoraD.getText().equals("")
+            && LocalRetirada.getText().equals("")) {
+            Alerta.WARNING("Alerta", "Informe todos os campos!");
+        } else {
+            if(Utils.validarData(DataRetirada.getText(), DataDevolucao.getText())){
+                DadosSession.setDataRetirada(DataRetirada.getText());
+                DadosSession.setDataDevolucao(DataDevolucao.getText());
+                DadosSession.setHoraRetirada(HoraRetirada.getText());
+                DadosSession.setHoraDevolucao(HoraD.getText());
+                DadosSession.setAgencia(LocalRetirada.getText());
+                this.rotas.goCatalogo1();
+                fecharTelaAlugar();
+            } else {
+                Alerta.ERROR("Erro", "A data de devolução não pode ser anterior a data de retirada!");
+            }
 
-        DadosSession.setHoraRetirada(HoraRetirada.getText());
-        DadosSession.setHoraDevolucao(HoraDevolucao.getName());
-        DadosSession.setAgencia(LocalRetirada.getText());
-
-        this.rotas.goCatalogo1();
-        fecharTelaAlugar();
+        }
     }
 
     private void voltarHome(ActionEvent evt){
@@ -259,11 +280,11 @@ public class Alugar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DataDevolucao;
-    private javax.swing.JTextField DataRetirada;
-    private javax.swing.JTextField HoraD;
+    private javax.swing.JFormattedTextField DataDevolucao;
+    private javax.swing.JFormattedTextField DataRetirada;
+    private javax.swing.JFormattedTextField HoraD;
     private javax.swing.JLayeredPane HoraDevolucao;
-    private javax.swing.JTextField HoraRetirada;
+    private javax.swing.JFormattedTextField HoraRetirada;
     private javax.swing.JTextField LocalRetirada;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

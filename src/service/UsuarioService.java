@@ -8,6 +8,8 @@ import java.util.List;
 
 public class UsuarioService {
     AluguelService aluguelService = new AluguelService();
+    CarroService carroService = new CarroService();
+    ClienteService clienteService = new ClienteService();
     List<Usuario> bdUsuarios = new ArrayList<Usuario>();
 
     public boolean validarLogin(String usuario, String senha){
@@ -16,7 +18,9 @@ public class UsuarioService {
 
         for (Usuario user: this.bdUsuarios) {
             if(user.getUsuario().equals(usuario) && user.getSenha().equals(senha)){
-                aluguelService.inserirAlugueis();
+                //aluguelService.inserirAlugueis();
+                carroService.inserirCarros();
+                //clienteService.inserirCliente();
                 DadosSession.setUsuarioLogado(user);
                 return true;
             }
