@@ -109,15 +109,16 @@ public class Alugar extends javax.swing.JFrame {
         LocalRetirada.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         DataRetirada.setBackground(new java.awt.Color(255, 255, 204));
-        DataRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        DataRetirada.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         HoraRetirada.setBackground(new java.awt.Color(255, 255, 204));
-        HoraRetirada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        HoraRetirada.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         DataDevolucao.setBackground(new java.awt.Color(255, 255, 204));
-        DataDevolucao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        DataDevolucao.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         HoraD.setBackground(new java.awt.Color(255, 255, 204));
+        HoraD.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
         HoraDevolucao.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         HoraDevolucao.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);

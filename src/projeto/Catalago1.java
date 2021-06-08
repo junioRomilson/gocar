@@ -64,6 +64,7 @@ public class Catalago1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -123,7 +124,7 @@ public class Catalago1 extends javax.swing.JFrame {
         CardGol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         NomeGol.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeGol.setText("VW GOL 1.0");
+        NomeGol.setText(EnumModelo.GOL.getModelo());
 
         FotoGol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Gol.png"))); // NOI18N
 
@@ -142,96 +143,88 @@ public class Catalago1 extends javax.swing.JFrame {
         DevolucaoGol.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoGol.setText("Devolução");
 
-        DataRetiradaGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaGol.setText(DadosSession.getDataRetirada());
 
-        HoraRetiradaGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaGol.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        DataDevolucaoGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoGol.setText(DadosSession.getDataDevolucao());
 
-        HoraDevolucaoGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaoGol.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalGol.setText(DadosSession.getAgencia());
-
-        ValorGol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gol = CarroService.consultarPorMarca(EnumModelo.GOL.getModelo()).get(0);
         ValorGol.setText(Utils.calcularValorAluguel(gol, diasAluguel));
 
         javax.swing.GroupLayout CardGolLayout = new javax.swing.GroupLayout(CardGol);
         CardGol.setLayout(CardGolLayout);
         CardGolLayout.setHorizontalGroup(
-            CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardGolLayout.createSequentialGroup()
-                .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 59, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardGolLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(NomeGol)
-                .addGap(102, 102, 102))
-            .addGroup(CardGolLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(RetiradaGol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(DevolucaoGol)
-                .addGap(36, 36, 36))
-            .addGroup(CardGolLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(AlugarGol)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(CardGolLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LocalGol)
-                    .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(DataRetiradaGol)
-                        .addComponent(HoraRetiradaGol)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CardGolLayout.createSequentialGroup()
-                        .addComponent(DataDevolucaoGol)
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardGolLayout.createSequentialGroup()
-                        .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(HoraDevolucaoGol)
-                            .addComponent(ValorGol))
-                        .addGap(68, 68, 68))))
+                CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardGolLayout.createSequentialGroup()
+                                .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 59, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardGolLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NomeGol)
+                                .addGap(102, 102, 102))
+                        .addGroup(CardGolLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(RetiradaGol)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(DevolucaoGol)
+                                .addGap(36, 36, 36))
+                        .addGroup(CardGolLayout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(AlugarGol)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(CardGolLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(LocalGol)
+                                        .addComponent(HoraRetiradaGol)
+                                        .addComponent(DataRetiradaGol))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardGolLayout.createSequentialGroup()
+                                                .addComponent(ValorGol)
+                                                .addGap(68, 68, 68))
+                                        .addGroup(CardGolLayout.createSequentialGroup()
+                                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(HoraDevolucaoGol)
+                                                        .addComponent(DataDevolucaoGol))
+                                                .addContainerGap())))
         );
         CardGolLayout.setVerticalGroup(
-            CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardGolLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(NomeGol)
-                .addGap(18, 18, 18)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CardGolLayout.createSequentialGroup()
-                        .addGap(0, 172, Short.MAX_VALUE)
-                        .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RetiradaGol)
-                            .addComponent(DevolucaoGol))))
-                .addGap(13, 13, 13)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataRetiradaGol)
-                    .addComponent(DataDevolucaoGol))
-                .addGap(28, 28, 28)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraDevolucaoGol)
-                    .addComponent(HoraRetiradaGol))
-                .addGap(27, 27, 27)
-                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LocalGol)
-                    .addComponent(ValorGol))
-                .addGap(32, 32, 32)
-                .addComponent(AlugarGol)
-                .addGap(21, 21, 21))
+                CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardGolLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(NomeGol)
+                                .addGap(18, 18, 18)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(CardGolLayout.createSequentialGroup()
+                                                .addGap(0, 183, Short.MAX_VALUE)
+                                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(RetiradaGol)
+                                                        .addComponent(DevolucaoGol))))
+                                .addGap(13, 13, 13)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(DataRetiradaGol)
+                                        .addComponent(DataDevolucaoGol))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraRetiradaGol)
+                                        .addComponent(HoraDevolucaoGol))
+                                .addGap(43, 43, 43)
+                                .addGroup(CardGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalGol)
+                                        .addComponent(ValorGol))
+                                .addGap(32, 32, 32)
+                                .addComponent(AlugarGol)
+                                .addGap(21, 21, 21))
         );
 
         NomeKwid.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeKwid.setText("Kwid 1.0");
+        NomeKwid.setText(EnumModelo.KWUID.getModelo());
 
         FotoKwid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/kwid.png"))); // NOI18N
 
@@ -250,89 +243,90 @@ public class Catalago1 extends javax.swing.JFrame {
         DevolucaoKwid.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoKwid.setText("Devolução");
 
-        DataRetiradaKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaKwid.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoKwid.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaKwid.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaooKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaooKwid.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalKwid.setText(DadosSession.getAgencia());
 
-        ValorKwid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         kwid = carroService.consultarPorMarca(EnumModelo.KWUID.getModelo()).get(0);
         ValorKwid.setText(Utils.calcularValorAluguel(kwid,diasAluguel));
 
         javax.swing.GroupLayout CardKwidLayout = new javax.swing.GroupLayout(CardKwid);
         CardKwid.setLayout(CardKwidLayout);
         CardKwidLayout.setHorizontalGroup(
-            CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
-                        .addComponent(NomeKwid)
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
-                        .addComponent(AlugarKwid, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
-                        .addComponent(FotoKwid)
-                        .addGap(27, 27, 27))
-                    .addGroup(CardKwidLayout.createSequentialGroup()
-                        .addComponent(RetiradaKwid)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DevolucaoKwid)
-                        .addGap(37, 37, 37))))
-            .addGroup(CardKwidLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DataRetiradaKwid)
-                    .addComponent(HoraRetiradaKwid)
-                    .addComponent(LocalKwid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DataDevolucaoKwid)
-                    .addComponent(HoraDevolucaooKwid)
-                    .addComponent(ValorKwid))
-                .addGap(74, 74, 74))
+                CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
+                                .addContainerGap(36, Short.MAX_VALUE)
+                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
+                                                .addComponent(NomeKwid)
+                                                .addGap(118, 118, 118))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
+                                                .addComponent(AlugarKwid, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(104, 104, 104))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardKwidLayout.createSequentialGroup()
+                                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                                                .addComponent(RetiradaKwid)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(DevolucaoKwid))
+                                                        .addComponent(FotoKwid))
+                                                .addGap(27, 27, 27))))
+                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                                .addComponent(LocalKwid)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(ValorKwid))
+                                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(DataRetiradaKwid)
+                                                        .addComponent(HoraRetiradaKwid))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(DataDevolucaoKwid)
+                                                        .addComponent(HoraDevolucaooKwid))))
+                                .addGap(49, 49, 49))
         );
         CardKwidLayout.setVerticalGroup(
-            CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardKwidLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(NomeKwid)
-                .addGap(28, 28, 28)
-                .addComponent(FotoKwid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RetiradaKwid)
-                    .addComponent(DevolucaoKwid))
-                .addGap(18, 18, 18)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataRetiradaKwid)
-                    .addComponent(DataDevolucaoKwid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraRetiradaKwid)
-                    .addComponent(HoraDevolucaooKwid))
-                .addGap(31, 31, 31)
-                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LocalKwid)
-                    .addComponent(ValorKwid))
-                .addGap(33, 33, 33)
-                .addComponent(AlugarKwid)
-                .addGap(24, 24, 24))
+                CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(NomeKwid)
+                                .addGap(28, 28, 28)
+                                .addComponent(FotoKwid)
+                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                                .addGap(32, 32, 32)
+                                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(RetiradaKwid)
+                                                        .addComponent(DevolucaoKwid))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
+                                        .addGroup(CardKwidLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(DataRetiradaKwid)
+                                                        .addComponent(DataDevolucaoKwid))))
+                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraRetiradaKwid)
+                                        .addComponent(HoraDevolucaooKwid))
+                                .addGap(31, 31, 31)
+                                .addGroup(CardKwidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalKwid)
+                                        .addComponent(ValorKwid))
+                                .addGap(33, 33, 33)
+                                .addComponent(AlugarKwid)
+                                .addGap(24, 24, 24))
         );
 
         NomeUno.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
-        NomeUno.setText("Uno 1.0");
+        NomeUno.setText(EnumModelo.UNO.getModelo());
 
         FotoUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/uno.png"))); // NOI18N
 
@@ -344,97 +338,92 @@ public class Catalago1 extends javax.swing.JFrame {
                 alugarUno(evt);
             }
         });
-
         RetiradaUno.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaUno.setText("Retirada");
 
         DevolucaoUno.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoUno.setText("Devolução");
 
-        DataRetiradaUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaUno.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoUno.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaUno.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaoUno.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalUno.setText(DadosSession.getAgencia());
 
-        ValorUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         uno = carroService.consultarPorMarca(EnumModelo.UNO.getModelo()).get(0);
         ValorUno.setText(Utils.calcularValorAluguel(uno, diasAluguel));
 
         javax.swing.GroupLayout CardUnoLayout = new javax.swing.GroupLayout(CardUno);
         CardUno.setLayout(CardUnoLayout);
         CardUnoLayout.setHorizontalGroup(
-            CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardUnoLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
-                        .addComponent(NomeUno)
-                        .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
-                        .addComponent(AlugarUno, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
-                        .addComponent(FotoUno)
-                        .addGap(25, 25, 25))))
-            .addGroup(CardUnoLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CardUnoLayout.createSequentialGroup()
-                        .addComponent(LocalUno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ValorUno))
-                    .addGroup(CardUnoLayout.createSequentialGroup()
-                        .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DataRetiradaUno)
-                            .addComponent(HoraRetiradaUno))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DataDevolucaoUno)
-                            .addComponent(HoraDevolucaoUno))))
-                .addGap(73, 73, 73))
-            .addGroup(CardUnoLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(RetiradaUno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(DevolucaoUno)
-                .addGap(35, 35, 35))
+                CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                .addContainerGap(35, Short.MAX_VALUE)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
+                                                .addComponent(NomeUno)
+                                                .addGap(117, 117, 117))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
+                                                .addComponent(AlugarUno, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(98, 98, 98))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardUnoLayout.createSequentialGroup()
+                                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                                                .addComponent(RetiradaUno)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(DevolucaoUno))
+                                                        .addComponent(FotoUno, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGap(25, 25, 25))))
+                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                                                .addComponent(HoraRetiradaUno)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(HoraDevolucaoUno))
+                                                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                                                .addComponent(DataRetiradaUno)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(DataDevolucaoUno)))
+                                                .addGap(53, 53, 53))
+                                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                                .addComponent(LocalUno)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(ValorUno)
+                                                .addGap(52, 52, 52))))
         );
         CardUnoLayout.setVerticalGroup(
-            CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardUnoLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(NomeUno)
-                .addGap(31, 31, 31)
-                .addComponent(FotoUno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RetiradaUno)
-                    .addComponent(DevolucaoUno))
-                .addGap(18, 18, 18)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataRetiradaUno)
-                    .addComponent(DataDevolucaoUno))
-                .addGap(18, 18, 18)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraRetiradaUno)
-                    .addComponent(HoraDevolucaoUno))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LocalUno)
-                    .addComponent(ValorUno))
-                .addGap(24, 24, 24)
-                .addComponent(AlugarUno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardUnoLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(NomeUno)
+                                .addGap(31, 31, 31)
+                                .addComponent(FotoUno)
+                                .addGap(44, 44, 44)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RetiradaUno)
+                                        .addComponent(DevolucaoUno))
+                                .addGap(18, 18, 18)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(DataRetiradaUno)
+                                        .addComponent(DataDevolucaoUno))
+                                .addGap(18, 18, 18)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraRetiradaUno)
+                                        .addComponent(HoraDevolucaoUno))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addGroup(CardUnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalUno)
+                                        .addComponent(ValorUno))
+                                .addGap(24, 24, 24)
+                                .addComponent(AlugarUno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logop.png"))); // NOI18N
@@ -448,7 +437,6 @@ public class Catalago1 extends javax.swing.JFrame {
                 voltar(evt);
             }
         });
-
 
         Proximo.setBackground(new java.awt.Color(255, 255, 0));
         Proximo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -470,79 +458,76 @@ public class Catalago1 extends javax.swing.JFrame {
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(299, 299, 299)
-                        .addComponent(GrupoA)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(0, 95, Short.MAX_VALUE)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(213, 213, 213)
-                                .addComponent(Proximo)
-                                .addGap(495, 495, 495))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(CardGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)
-                                .addComponent(CardKwid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(92, 92, 92)
-                                .addComponent(CardUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93))))))
+                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(299, 299, 299)
+                                                .addComponent(GrupoA)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                                .addGap(0, 89, Short.MAX_VALUE)
+                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                                                .addComponent(CardGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(93, 93, 93)
+                                                                .addComponent(CardKwid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(92, 92, 92)
+                                                                .addComponent(CardUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(93, 93, 93))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                                                .addComponent(Voltar)
+                                                                .addGap(214, 214, 214)
+                                                                .addComponent(Proximo)
+                                                                .addGap(496, 496, 496))))))
         );
         jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(0, 45, Short.MAX_VALUE)
-                    .addComponent(GrupoA)
-                .addGap(32, 32, 32))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(CardUno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CardKwid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(29, 29, 29)
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(CardGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26))
+                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                .addContainerGap(85, Short.MAX_VALUE)
+                                .addComponent(GrupoA)
+                                .addGap(32, 32, 32)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CardKwid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CardUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(Proximo)
+                                        .addComponent(Voltar))
+                                .addGap(37, 37, 37))
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(56, 56, 56)
+                                .addComponent(CardGol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltar(java.awt.event.ActionEvent evt) {                                       
+    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goAlugar();
         fecharCatalogo1();
     }
 
-    private void proximo(java.awt.event.ActionEvent evt) {                                       
+    private void proximo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goCatalogo2();
         fecharCatalogo1();
     }
@@ -553,17 +538,17 @@ public class Catalago1 extends javax.swing.JFrame {
         fecharCatalogo1();
     }
 
-    private void alugarGol(java.awt.event.ActionEvent evt) {                                       
+    private void alugarGol(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         DadosSession.setCarroAluguel(gol);
         alugar();
     }
 
-    private void alugarKwid(java.awt.event.ActionEvent evt) {                                       
+    private void alugarKwid(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         DadosSession.setCarroAluguel(kwid);
         alugar();
     }
 
-    private void alugarUno(java.awt.event.ActionEvent evt) {                                       
+    private void alugarUno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         DadosSession.setCarroAluguel(uno);
         alugar();
     }
@@ -579,7 +564,7 @@ public class Catalago1 extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

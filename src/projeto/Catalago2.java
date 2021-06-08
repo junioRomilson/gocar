@@ -56,7 +56,7 @@ public class Catalago2 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -136,92 +136,88 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoHb20.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoHb20.setText("Devolução");
 
-        DataRetiradaHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaHb20.setText(DadosSession.getDataRetirada());
 
-        HoraRetiradaHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaHb20.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        DataDevolucaoHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoHb20.setText(DadosSession.getDataDevolucao());
 
-        HoraDevolucaoHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaoHb20.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalHb20.setText(DadosSession.getAgencia());
 
-        ValorHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         hb20 = CarroService.consultarPorMarca(EnumModelo.HB20.getModelo()).get(0);
         ValorHb20.setText(Utils.calcularValorAluguel(hb20, diasAluguel));
+
+
 
         javax.swing.GroupLayout CardHb20Layout = new javax.swing.GroupLayout(CardHb20);
         CardHb20.setLayout(CardHb20Layout);
         CardHb20Layout.setHorizontalGroup(
-            CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardHb20Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DataRetiradaHb20)
-                    .addComponent(HoraRetiradaHb20)
-                    .addComponent(LocalHb20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardHb20Layout.createSequentialGroup()
-                        .addComponent(ValorHb20)
-                        .addGap(68, 68, 68))
-                    .addGroup(CardHb20Layout.createSequentialGroup()
-                        .addComponent(DataDevolucaoHb20)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CardHb20Layout.createSequentialGroup()
-                        .addComponent(HoraDevolucaoHb20)
-                        .addContainerGap())))
-            .addGroup(CardHb20Layout.createSequentialGroup()
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CardHb20Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(RetiradaHb20)
-                        .addGap(80, 80, 80)
-                        .addComponent(DevolucaoHb20))
-                    .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(CardHb20Layout.createSequentialGroup()
-                            .addGap(105, 105, 105)
-                            .addComponent(NomeHb20))
+                                .addGap(54, 54, 54)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(LocalHb20)
+                                        .addComponent(HoraRetiradaHb20)
+                                        .addComponent(DataRetiradaHb20))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardHb20Layout.createSequentialGroup()
+                                                .addComponent(ValorHb20)
+                                                .addGap(68, 68, 68))
+                                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(HoraDevolucaoHb20)
+                                                        .addComponent(DataDevolucaoHb20))
+                                                .addContainerGap())))
                         .addGroup(CardHb20Layout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(CardHb20Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(AlugarHb20)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                                .addGap(107, 107, 107)
+                                                .addComponent(AlugarHb20))
+                                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                                .addGap(105, 105, 105)
+                                                .addComponent(NomeHb20)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardHb20Layout.createSequentialGroup()
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                                .addGap(32, 32, 32)
+                                                .addComponent(RetiradaHb20)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(DevolucaoHb20))
+                                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                                .addContainerGap(22, Short.MAX_VALUE)
+                                                .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(36, 36, 36))
         );
         CardHb20Layout.setVerticalGroup(
-            CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardHb20Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(NomeHb20)
-                .addGap(37, 37, 37)
-                .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DevolucaoHb20)
-                    .addComponent(RetiradaHb20))
-                .addGap(31, 31, 31)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataDevolucaoHb20)
-                    .addComponent(DataRetiradaHb20))
-                .addGap(18, 18, 18)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraRetiradaHb20)
-                    .addComponent(HoraDevolucaoHb20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ValorHb20)
-                    .addComponent(LocalHb20))
-                .addGap(51, 51, 51)
-                .addComponent(AlugarHb20)
-                .addGap(31, 31, 31))
+                CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardHb20Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(NomeHb20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addComponent(FotoGol, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RetiradaHb20)
+                                        .addComponent(DevolucaoHb20))
+                                .addGap(26, 26, 26)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(DataRetiradaHb20)
+                                        .addComponent(DataDevolucaoHb20))
+                                .addGap(26, 26, 26)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraDevolucaoHb20)
+                                        .addComponent(HoraRetiradaHb20))
+                                .addGap(28, 28, 28)
+                                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalHb20)
+                                        .addComponent(ValorHb20))
+                                .addGap(18, 18, 18)
+                                .addComponent(AlugarHb20)
+                                .addGap(14, 14, 14))
         );
 
         NomeCronos.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
@@ -244,94 +240,86 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoCronos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoCronos.setText("Devolução");
 
-        DataRetiradaCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaCronos.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoCronos.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaCronos.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaoCronos.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalCronos.setText(DadosSession.getAgencia());
 
-        ValorCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cronos = carroService.consultarPorMarca(EnumModelo.CRONOS.getModelo()).get(0);
         ValorCronos.setText(Utils.calcularValorAluguel(cronos, diasAluguel));
 
         javax.swing.GroupLayout CardCronosLayout = new javax.swing.GroupLayout(CardCronos);
         CardCronos.setLayout(CardCronosLayout);
         CardCronosLayout.setHorizontalGroup(
-            CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardCronosLayout.createSequentialGroup()
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CardCronosLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(CardCronosLayout.createSequentialGroup()
-                                .addComponent(HoraRetiradaCronos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(HoraDevolucaoCronos))
-                            .addGroup(CardCronosLayout.createSequentialGroup()
-                                .addComponent(DataRetiradaCronos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(DataDevolucaoCronos))))
-                    .addGroup(CardCronosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LocalCronos)
-                        .addGap(152, 152, 152)
-                        .addComponent(ValorCronos)))
-                .addGap(72, 72, 72))
-            .addGroup(CardCronosLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CardCronosLayout.createSequentialGroup()
-                        .addComponent(FotoCrono)
-                        .addContainerGap(89, Short.MAX_VALUE))
-                    .addGroup(CardCronosLayout.createSequentialGroup()
-                        .addComponent(RetiradaCronos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DevolucaoCronos)
-                        .addGap(35, 35, 35))))
-            .addGroup(CardCronosLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(NomeCronos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardCronosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AlugarCronos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
+                CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardCronosLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AlugarCronos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104))
+                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(HoraRetiradaCronos)
+                                                        .addComponent(LocalCronos))
+                                                .addGap(147, 147, 147)
+                                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(ValorCronos)
+                                                        .addComponent(HoraDevolucaoCronos))
+                                                .addGap(49, 71, Short.MAX_VALUE))
+                                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                                .addComponent(DataRetiradaCronos)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(DataDevolucaoCronos)
+                                                .addGap(72, 72, 72))))
+                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                                .addComponent(FotoCrono)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                                .addComponent(RetiradaCronos)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(DevolucaoCronos)
+                                                .addGap(35, 35, 35))))
+                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(NomeCronos)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CardCronosLayout.setVerticalGroup(
-            CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardCronosLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(NomeCronos)
-                .addGap(37, 37, 37)
-                .addComponent(FotoCrono)
-                .addGap(18, 18, 18)
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RetiradaCronos)
-                    .addComponent(DevolucaoCronos))
-                .addGap(18, 18, 18)
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataRetiradaCronos)
-                    .addComponent(DataDevolucaoCronos))
-                .addGap(30, 30, 30)
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraRetiradaCronos)
-                    .addComponent(HoraDevolucaoCronos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LocalCronos)
-                    .addComponent(ValorCronos))
-                .addGap(42, 42, 42)
-                .addComponent(AlugarCronos)
-                .addGap(39, 39, 39))
+                CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardCronosLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(NomeCronos)
+                                .addGap(37, 37, 37)
+                                .addComponent(FotoCrono)
+                                .addGap(18, 18, 18)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RetiradaCronos)
+                                        .addComponent(DevolucaoCronos))
+                                .addGap(18, 18, 18)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(DataRetiradaCronos)
+                                        .addComponent(DataDevolucaoCronos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraRetiradaCronos)
+                                        .addComponent(HoraDevolucaoCronos))
+                                .addGap(31, 31, 31)
+                                .addGroup(CardCronosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalCronos)
+                                        .addComponent(ValorCronos))
+                                .addGap(33, 33, 33)
+                                .addComponent(AlugarCronos)
+                                .addGap(24, 24, 24))
         );
 
         NomeVersa.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
@@ -347,102 +335,95 @@ public class Catalago2 extends javax.swing.JFrame {
                 alugarNissanVersa(evt);
             }
         });
-
         RetiradaVersa.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaVersa.setText("Retirada");
 
         DevolucaoVersa.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoVersa.setText("Devolução");
 
-        DataRetiradaVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataRetiradaVersa.setText(DadosSession.getDataRetirada());
 
-        DataDevolucaoVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DataDevolucaoVersa.setText(DadosSession.getDataDevolucao());
 
-        HoraRetiradaVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraRetiradaVersa.setText(Utils.AS + DadosSession.getHoraRetirada());
 
-        HoraDevolucaoVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HoraDevolucaoVersa.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
-        LocalVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalVersa.setText(DadosSession.getAgencia());
 
-        ValorVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nissan = carroService.consultarPorMarca(EnumModelo.NISSAN_VERSA.getModelo()).get(0);
         ValorVersa.setText(Utils.calcularValorAluguel(nissan, diasAluguel));
 
         javax.swing.GroupLayout CardVersaLayout = new javax.swing.GroupLayout(CardVersa);
         CardVersa.setLayout(CardVersaLayout);
         CardVersaLayout.setHorizontalGroup(
-            CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
-                        .addComponent(AlugarVersa, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
-                        .addComponent(NomeVersa)
-                        .addGap(74, 74, 74))))
-            .addGroup(CardVersaLayout.createSequentialGroup()
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CardVersaLayout.createSequentialGroup()
-                        .addContainerGap(64, Short.MAX_VALUE)
-                        .addComponent(FotoVersa))
-                    .addGroup(CardVersaLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(RetiradaVersa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DevolucaoVersa)))
-                .addGap(25, 25, 25))
-            .addGroup(CardVersaLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CardVersaLayout.createSequentialGroup()
-                        .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(CardVersaLayout.createSequentialGroup()
-                                .addComponent(DataRetiradaVersa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(DataDevolucaoVersa))
-                            .addGroup(CardVersaLayout.createSequentialGroup()
-                                .addComponent(HoraRetiradaVersa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(HoraDevolucaoVersa)))
-                        .addGap(53, 53, 53))
-                    .addGroup(CardVersaLayout.createSequentialGroup()
-                        .addComponent(LocalVersa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ValorVersa)
-                        .addGap(50, 50, 50))))
+                CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
+                                                .addComponent(AlugarVersa, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(98, 98, 98))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
+                                                .addComponent(NomeVersa)
+                                                .addGap(74, 74, 74))))
+                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                                .addContainerGap(64, Short.MAX_VALUE)
+                                                .addComponent(FotoVersa))
+                                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                                .addGap(38, 38, 38)
+                                                .addComponent(RetiradaVersa)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(DevolucaoVersa)))
+                                .addGap(25, 25, 25))
+                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                                .addComponent(LocalVersa)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(ValorVersa)
+                                                .addGap(52, 52, 52))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardVersaLayout.createSequentialGroup()
+                                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                                                .addComponent(DataRetiradaVersa)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(DataDevolucaoVersa))
+                                                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                                                .addComponent(HoraRetiradaVersa)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(HoraDevolucaoVersa)))
+                                                .addGap(53, 53, 53))))
         );
         CardVersaLayout.setVerticalGroup(
-            CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardVersaLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(NomeVersa)
-                .addGap(38, 38, 38)
-                .addComponent(FotoVersa)
-                .addGap(18, 18, 18)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RetiradaVersa)
-                    .addComponent(DevolucaoVersa))
-                .addGap(18, 18, 18)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataRetiradaVersa)
-                    .addComponent(DataDevolucaoVersa))
-                .addGap(18, 18, 18)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HoraDevolucaoVersa)
-                    .addComponent(HoraRetiradaVersa))
-                .addGap(46, 46, 46)
-                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LocalVersa)
-                    .addComponent(ValorVersa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AlugarVersa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CardVersaLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(NomeVersa)
+                                .addGap(38, 38, 38)
+                                .addComponent(FotoVersa)
+                                .addGap(18, 18, 18)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(RetiradaVersa)
+                                        .addComponent(DevolucaoVersa))
+                                .addGap(18, 18, 18)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(DataRetiradaVersa)
+                                        .addComponent(DataDevolucaoVersa))
+                                .addGap(18, 18, 18)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(HoraDevolucaoVersa)
+                                        .addComponent(HoraRetiradaVersa))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addGroup(CardVersaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(LocalVersa)
+                                        .addComponent(ValorVersa))
+                                .addGap(24, 24, 24)
+                                .addComponent(AlugarVersa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23))
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logop.png"))); // NOI18N
@@ -487,66 +468,67 @@ public class Catalago2 extends javax.swing.JFrame {
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(CardHb20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
-                .addComponent(CardCronos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(CardVersa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(208, 208, 208)
-                        .addComponent(GrupoFS))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(455, 455, 455)
-                        .addComponent(Voltar)
-                        .addGap(248, 248, 248)
-                        .addComponent(Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(252, 252, 252)
-                        .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(469, Short.MAX_VALUE))
+                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(CardHb20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(94, 94, 94)
+                                .addComponent(CardCronos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                                .addComponent(CardVersa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(89, 89, 89))
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel2)
+                                                .addGap(208, 208, 208)
+                                                .addComponent(GrupoFS))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addGap(300, 300, 300)
+                                                .addComponent(Voltar)
+                                                .addGap(248, 248, 248)
+                                                .addComponent(Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(248, 248, 248)
+                                                .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                    .addComponent(GrupoFS)
-                        .addGap(48, 48, 48))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                    .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(CardHb20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CardCronos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CardVersa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(53, 53, 53)
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Voltar)
-                .addComponent(Anterior)
-                .addComponent(Proximo))
-                    .addGap(36, 36, 36))
+                jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(GrupoFS)
+                                                .addGap(48, 48, 48))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CardVersa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(CardCronos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(CardHb20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(19, 19, 19)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Proximo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Anterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Voltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 192, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 293, Short.MAX_VALUE))
         );
 
         pack();
@@ -573,17 +555,17 @@ public class Catalago2 extends javax.swing.JFrame {
         alugar();
     }
 
-    private void voltar(java.awt.event.ActionEvent evt) {                                       
+    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goAlugar();
         fecharCatalogo2();
     }
 
-    private void anterior(java.awt.event.ActionEvent evt) {                                       
+    private void anterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goCatalogo1();
         fecharCatalogo2();
     }
 
-    private void proximo(java.awt.event.ActionEvent evt) {                                       
+    private void proximo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         this.rotas.goCatalogo3();
         fecharCatalogo2();
     }
@@ -599,7 +581,7 @@ public class Catalago2 extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
