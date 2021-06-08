@@ -201,9 +201,9 @@ public class Alugar extends javax.swing.JFrame {
 
     private void alugar(java.awt.event.ActionEvent evt){
 
-        if(DataRetirada.getText().equals("") && DataDevolucao.getText().equals("")
-            && HoraRetirada.getText().equals("") && HoraD.getText().equals("")
-            && LocalRetirada.getText().equals("")) {
+        if(DataRetirada.getText().equals("  /  /    ") || DataDevolucao.getText().equals("  /  /    ")
+            || HoraRetirada.getText().equals("  :  ") || HoraD.getText().equals("  :  ")
+            || LocalRetirada.getText().equals("")) {
             Alerta.WARNING("Alerta", "Informe todos os campos!");
         } else {
             if(Utils.validarData(DataRetirada.getText(), DataDevolucao.getText())){
