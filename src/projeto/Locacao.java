@@ -428,6 +428,7 @@ public class Locacao extends javax.swing.JFrame {
                 this.rotas.goHome();
                 DadosSession.setCliente(null);
                 DadosSession.setIndexCliente(0);
+                fecharTelaLocacao();
             }
         }
     }
