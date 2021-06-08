@@ -20,7 +20,7 @@ public class UsuarioService {
             if(user.getUsuario().equals(usuario) && user.getSenha().equals(senha)){
                 //aluguelService.inserirAlugueis();
                 carroService.inserirCarros();
-                //clienteService.inserirCliente();
+                clienteService.inserirCliente();
                 DadosSession.setUsuarioLogado(user);
                 return true;
             }

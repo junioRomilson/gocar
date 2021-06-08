@@ -53,7 +53,7 @@ public class Catalago3 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        this.setExtendedState(Frame.MAXIMIZED_BOTH);
+
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/fundo.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -120,11 +120,6 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarCactos.setBackground(new java.awt.Color(255, 255, 51));
         AlugarCactos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarCactos.setText("Alugar");
-        AlugarCactos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alugarCitroenCactos(evt);
-            }
-        });
 
         RetiradaCactos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaCactos.setText("Retirada");
@@ -132,18 +127,23 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoCactos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoCactos.setText("Devolução");
 
-        DataRetiradaCactos.setText(DadosSession.getDataRetirada());
+        DataRetiradaCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataRetiradaCactos.setText("Data");
 
-        HoraRetiradaCactos.setText(Utils.AS + DadosSession.getHoraRetirada());
+        HoraRetiradaCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraRetiradaCactos.setText("Hora");
 
-        DataDevolucaoCactos.setText(DadosSession.getDataDevolucao());
+        DataDevolucaoCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataDevolucaoCactos.setText("Data");
 
-        HoraDevolucaoCactos.setText(Utils.AS + DadosSession.getHoraDevolucao());
+        HoraDevolucaoCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraDevolucaoCactos.setText("Hora");
 
-        LocalCactos.setText(DadosSession.getAgencia());
+        LocalCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocalCactos.setText("Local");
 
-        citroen = carroService.consultarPorMarca(EnumModelo.CITROEN_CACTOS.getModelo()).get(0);
-        ValorCactos.setText(Utils.calcularValorAluguel(citroen, diasAluguel));
+        ValorCactos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ValorCactos.setText("Valor");
 
         javax.swing.GroupLayout CardCactosLayout = new javax.swing.GroupLayout(CardCactos);
         CardCactos.setLayout(CardCactosLayout);
@@ -160,9 +160,9 @@ public class Catalago3 extends javax.swing.JFrame {
             .addGroup(CardCactosLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(CardCactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LocalCactos)
-                    .addComponent(HoraRetiradaCactos)
-                    .addComponent(DataRetiradaCactos))
+                    .addComponent(DataRetiradaCactos)
+                    .addComponent(HoraRetiradaCactos, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LocalCactos, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CardCactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardCactosLayout.createSequentialGroup()
@@ -221,11 +221,6 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarKicks.setBackground(new java.awt.Color(255, 255, 0));
         AlugarKicks.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarKicks.setText("Alugar");
-        AlugarKicks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alugarKicks(evt);
-            }
-        });
 
         RetiradaKicks.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaKicks.setText("Retirada");
@@ -233,18 +228,23 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoKicks.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoKicks.setText("Devolução");
 
-        DataRetiradaKicks.setText(DadosSession.getDataRetirada());
+        DataRetiradaKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataRetiradaKicks.setText("Data");
 
-        DataDevolucaoKicks.setText(DadosSession.getDataDevolucao());
+        DataDevolucaoKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataDevolucaoKicks.setText("Data");
 
-        HoraRetiradaKicks.setText(Utils.AS + DadosSession.getHoraRetirada());
+        HoraRetiradaKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraRetiradaKicks.setText("Hora");
 
-        HoraDevolucaoKicks.setText(Utils.AS + DadosSession.getHoraDevolucao());
+        HoraDevolucaoKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraDevolucaoKicks.setText("Hora");
 
-        LocalKicks.setText(DadosSession.getAgencia());
+        LocalKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocalKicks.setText("Local");
 
-        kicks = carroService.consultarPorMarca(EnumModelo.KICKS.getModelo()).get(0);
-        ValorKicks.setText(Utils.calcularValorAluguel(kicks,diasAluguel));
+        ValorKicks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ValorKicks.setText("Valor");
 
         javax.swing.GroupLayout CardKicksLayout = new javax.swing.GroupLayout(CardKicks);
         CardKicks.setLayout(CardKicksLayout);
@@ -321,11 +321,6 @@ public class Catalago3 extends javax.swing.JFrame {
         AlugarDuster.setBackground(new java.awt.Color(255, 255, 0));
         AlugarDuster.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarDuster.setText("Alugar");
-        AlugarDuster.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alugarDuster(evt);
-            }
-        });
 
         RetiradaDuster.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaDuster.setText("Retirada");
@@ -333,29 +328,28 @@ public class Catalago3 extends javax.swing.JFrame {
         DevolucaoDuster.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         DevolucaoDuster.setText("Devolução");
 
-        DataRetiradaDuster.setText(DadosSession.getDataRetirada());
+        DataRetiradaDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataRetiradaDuster.setText("Data");
 
-        DataDevolucaoDuster.setText(DadosSession.getDataDevolucao());
+        DataDevolucaoDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DataDevolucaoDuster.setText("Data");
 
-        HoraRetiradaDuster.setText(Utils.AS + DadosSession.getHoraRetirada());
+        HoraRetiradaDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraRetiradaDuster.setText("Hora");
 
-        HoraDevolucaoDuster.setText(Utils.AS + DadosSession.getHoraDevolucao());
+        HoraDevolucaoDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        HoraDevolucaoDuster.setText("Hora");
 
-        LocalDuster.setText(DadosSession.getAgencia());
+        LocalDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocalDuster.setText("Local");
 
-        duster = carroService.consultarPorMarca(EnumModelo.DUSTER.getModelo()).get(0);
-        ValorDuster.setText(Utils.calcularValorAluguel(duster, diasAluguel));
+        ValorDuster.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ValorDuster.setText("Valor");
 
         javax.swing.GroupLayout CardDusterLayout = new javax.swing.GroupLayout(CardDuster);
         CardDuster.setLayout(CardDusterLayout);
         CardDusterLayout.setHorizontalGroup(
             CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CardDusterLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(DataRetiradaDuster)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(DataDevolucaoDuster)
-                .addGap(61, 61, 61))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardDusterLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(NomeDuster)
@@ -366,16 +360,6 @@ public class Catalago3 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(DevolucaoDuster)
                 .addGap(21, 21, 21))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardDusterLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HoraRetiradaDuster)
-                    .addComponent(LocalDuster))
-                .addGap(167, 167, 167)
-                .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HoraDevolucaoDuster)
-                    .addComponent(ValorDuster))
-                .addGap(60, 60, 60))
             .addGroup(CardDusterLayout.createSequentialGroup()
                 .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CardDusterLayout.createSequentialGroup()
@@ -384,7 +368,28 @@ public class Catalago3 extends javax.swing.JFrame {
                     .addGroup(CardDusterLayout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(AlugarDuster, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(CardDusterLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CardDusterLayout.createSequentialGroup()
+                        .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CardDusterLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(LocalDuster)
+                                .addGap(180, 180, 180))
+                            .addGroup(CardDusterLayout.createSequentialGroup()
+                                .addComponent(HoraRetiradaDuster)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HoraDevolucaoDuster)
+                            .addComponent(ValorDuster))
+                        .addGap(60, 60, 60))
+                    .addGroup(CardDusterLayout.createSequentialGroup()
+                        .addComponent(DataRetiradaDuster)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DataDevolucaoDuster)
+                        .addGap(61, 61, 61))))
         );
         CardDusterLayout.setVerticalGroup(
             CardDusterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,26 +419,16 @@ public class Catalago3 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logop.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Imagem1.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         Voltar.setBackground(new java.awt.Color(255, 255, 0));
         Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Voltar.setText("Voltar");
-        Voltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltar(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 51));
         jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButton1.setText("Anterior");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anterior(evt);
-            }
-        });
+        jButton1.setText("Proximo");
 
         jDesktopPane1.setLayer(GrupoGC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardCactos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -455,14 +450,14 @@ public class Catalago3 extends javax.swing.JFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(GrupoGC)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(CardKicks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addComponent(CardDuster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88))))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -487,11 +482,11 @@ public class Catalago3 extends javax.swing.JFrame {
                     .addComponent(CardCactos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CardKicks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CardDuster, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Voltar)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59))
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -504,7 +499,7 @@ public class Catalago3 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 323, Short.MAX_VALUE))
+                .addGap(0, 300, Short.MAX_VALUE))
         );
 
         pack();
@@ -531,12 +526,12 @@ public class Catalago3 extends javax.swing.JFrame {
         alugar();
     }
 
-    private void voltar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+    private void voltar(java.awt.event.ActionEvent evt) {                                       
         this.rotas.goAlugar();
         fecharCatalogo3();
     }
 
-    private void anterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+    private void anterior(java.awt.event.ActionEvent evt) {                                       
         this.rotas.goCatalogo2();
         fecharCatalogo3();
     }
