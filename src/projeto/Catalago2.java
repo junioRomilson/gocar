@@ -104,6 +104,7 @@ public class Catalago2 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Voltar = new javax.swing.JButton();
         Proximo = new javax.swing.JButton();
+        Anterior = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GoCar Locadora de Carros");
@@ -123,6 +124,11 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarHb20.setBackground(new java.awt.Color(255, 255, 51));
         AlugarHb20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarHb20.setText("Alugar");
+        AlugarHb20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarHB20(evt);
+            }
+        });
 
         RetiradaHb20.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaHb20.setText("Retirada");
@@ -131,36 +137,37 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoHb20.setText("Devolução");
 
         DataRetiradaHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataRetiradaHb20.setText("Data");
+        DataRetiradaHb20.setText(DadosSession.getDataRetirada());
 
         HoraRetiradaHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraRetiradaHb20.setText("Hora");
+        HoraRetiradaHb20.setText(Utils.AS + DadosSession.getHoraRetirada());
 
         DataDevolucaoHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataDevolucaoHb20.setText("Data");
+        DataDevolucaoHb20.setText(DadosSession.getDataDevolucao());
 
         HoraDevolucaoHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraDevolucaoHb20.setText("Hora");
+        HoraDevolucaoHb20.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
         LocalHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LocalHb20.setText("Local");
+        LocalHb20.setText(DadosSession.getAgencia());
 
         ValorHb20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ValorHb20.setText("Valor");
+        hb20 = CarroService.consultarPorMarca(EnumModelo.HB20.getModelo()).get(0);
+        ValorHb20.setText(Utils.calcularValorAluguel(hb20, diasAluguel));
 
         javax.swing.GroupLayout CardHb20Layout = new javax.swing.GroupLayout(CardHb20);
         CardHb20.setLayout(CardHb20Layout);
         CardHb20Layout.setHorizontalGroup(
             CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CardHb20Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(54, 54, 54)
                 .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DataRetiradaHb20)
                     .addComponent(HoraRetiradaHb20)
                     .addComponent(LocalHb20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CardHb20Layout.createSequentialGroup()
+                .addGroup(CardHb20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CardHb20Layout.createSequentialGroup()
                         .addComponent(ValorHb20)
                         .addGap(68, 68, 68))
                     .addGroup(CardHb20Layout.createSequentialGroup()
@@ -225,6 +232,11 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarCronos.setBackground(new java.awt.Color(255, 255, 0));
         AlugarCronos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarCronos.setText("Alugar");
+        AlugarCronos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarCronos(evt);
+            }
+        });
 
         RetiradaCronos.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaCronos.setText("Retirada");
@@ -233,22 +245,23 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoCronos.setText("Devolução");
 
         DataRetiradaCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataRetiradaCronos.setText("Data");
+        DataRetiradaCronos.setText(DadosSession.getDataRetirada());
 
         DataDevolucaoCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataDevolucaoCronos.setText("Data");
+        DataDevolucaoCronos.setText(DadosSession.getDataDevolucao());
 
         HoraRetiradaCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraRetiradaCronos.setText("Hora");
+        HoraRetiradaCronos.setText(Utils.AS + DadosSession.getHoraRetirada());
 
         HoraDevolucaoCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraDevolucaoCronos.setText("Hora");
+        HoraDevolucaoCronos.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
         LocalCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LocalCronos.setText("Local");
+        LocalCronos.setText(DadosSession.getAgencia());
 
         ValorCronos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ValorCronos.setText("Valor");
+        cronos = carroService.consultarPorMarca(EnumModelo.CRONOS.getModelo()).get(0);
+        ValorCronos.setText(Utils.calcularValorAluguel(cronos, diasAluguel));
 
         javax.swing.GroupLayout CardCronosLayout = new javax.swing.GroupLayout(CardCronos);
         CardCronos.setLayout(CardCronosLayout);
@@ -329,6 +342,11 @@ public class Catalago2 extends javax.swing.JFrame {
         AlugarVersa.setBackground(new java.awt.Color(255, 255, 0));
         AlugarVersa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         AlugarVersa.setText("Alugar");
+        AlugarVersa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alugarNissanVersa(evt);
+            }
+        });
 
         RetiradaVersa.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
         RetiradaVersa.setText("Retirada");
@@ -337,22 +355,23 @@ public class Catalago2 extends javax.swing.JFrame {
         DevolucaoVersa.setText("Devolução");
 
         DataRetiradaVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataRetiradaVersa.setText("Data");
+        DataRetiradaVersa.setText(DadosSession.getDataRetirada());
 
         DataDevolucaoVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DataDevolucaoVersa.setText("Data");
+        DataDevolucaoVersa.setText(DadosSession.getDataDevolucao());
 
         HoraRetiradaVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraRetiradaVersa.setText("Hora");
+        HoraRetiradaVersa.setText(Utils.AS + DadosSession.getHoraRetirada());
 
         HoraDevolucaoVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        HoraDevolucaoVersa.setText("Hora");
+        HoraDevolucaoVersa.setText(Utils.AS + DadosSession.getHoraDevolucao());
 
         LocalVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LocalVersa.setText("Local");
+        LocalVersa.setText(DadosSession.getAgencia());
 
         ValorVersa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ValorVersa.setText("Valor");
+        nissan = carroService.consultarPorMarca(EnumModelo.NISSAN_VERSA.getModelo()).get(0);
+        ValorVersa.setText(Utils.calcularValorAluguel(nissan, diasAluguel));
 
         javax.swing.GroupLayout CardVersaLayout = new javax.swing.GroupLayout(CardVersa);
         CardVersa.setLayout(CardVersaLayout);
@@ -432,10 +451,29 @@ public class Catalago2 extends javax.swing.JFrame {
         Voltar.setBackground(new java.awt.Color(255, 255, 0));
         Voltar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar(evt);
+            }
+        });
+
+        Anterior.setBackground(new java.awt.Color(255, 255, 0));
+        Anterior.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        Anterior.setText("Anterior");
+        Anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anterior(evt);
+            }
+        });
 
         Proximo.setBackground(new java.awt.Color(255, 255, 0));
         Proximo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Proximo.setText("Proximo");
+        Proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proximo(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(GrupoFS, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(CardHb20, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -444,6 +482,7 @@ public class Catalago2 extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Voltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Proximo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Anterior, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -467,6 +506,8 @@ public class Catalago2 extends javax.swing.JFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(455, 455, 455)
                         .addComponent(Voltar)
+                        .addGap(248, 248, 248)
+                        .addComponent(Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(252, 252, 252)
                         .addComponent(Proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(469, Short.MAX_VALUE))
@@ -474,24 +515,25 @@ public class Catalago2 extends javax.swing.JFrame {
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap(77, Short.MAX_VALUE)
-                        .addComponent(GrupoFS)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                    .addComponent(GrupoFS)
                         .addGap(48, 48, 48))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                    .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CardHb20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CardCronos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CardVersa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(53, 53, 53)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Voltar)
-                    .addComponent(Proximo))
-                .addGap(36, 36, 36))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(CardHb20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CardCronos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CardVersa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(53, 53, 53)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(Voltar)
+                .addComponent(Anterior)
+                .addComponent(Proximo))
+                    .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -619,6 +661,7 @@ public class Catalago2 extends javax.swing.JFrame {
     private javax.swing.JLabel NomeHb20;
     private javax.swing.JLabel NomeVersa;
     private javax.swing.JButton Proximo;
+    private javax.swing.JButton Anterior;
     private javax.swing.JLabel RetiradaCronos;
     private javax.swing.JLabel RetiradaHb20;
     private javax.swing.JLabel RetiradaVersa;
