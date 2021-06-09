@@ -18,9 +18,9 @@ public class UsuarioService {
 
         for (Usuario user: this.bdUsuarios) {
             if(user.getUsuario().equals(usuario) && user.getSenha().equals(senha)){
-                //aluguelService.inserirAlugueis();
                 carroService.inserirCarros();
-                clienteService.inserirCliente();
+                //aluguelService.inserirAlugueis();
+                //clienteService.inserirCliente();
                 DadosSession.setUsuarioLogado(user);
                 return true;
             }
